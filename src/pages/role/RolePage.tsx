@@ -193,35 +193,35 @@ export const RolePage: React.FC = () => {
 
     return (
         <div className="space-y-8 font-sans animate-in fade-in duration-300 pb-10">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-white p-8 rounded-[2rem] rounded-tr-none border-2 border-blue-50 shadow-sm hover:border-cyan-100 transition-colors group">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-white p-8 rounded-[2rem] rounded-tr-none border-2 border-green-50 shadow-sm hover:border-emerald-100 transition-colors group">
                 <div>
                     <h1 className="text-2xl lg:text-3xl font-light text-slate-800 tracking-tight">Manajemen Grup Peran (*Roles*)</h1>
                     <p className="text-sm text-slate-500 font-medium mt-2">Definisikan klaster otorisasi pengguna dan pengikatan hak akses pada setiap lapisan sistem.</p>
                 </div>
                 {canCreate && (
-                    <button onClick={() => openModalRole()} className="bg-blue-950 hover:bg-blue-900 text-white px-6 py-3.5 rounded-2xl rounded-tr-none flex items-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all font-black text-xs uppercase tracking-widest active:scale-95 group/btn">
-                        <Plus size={16} className="text-cyan-400 group-hover/btn:rotate-90 transition-transform" /> Bentuk Peran Baru
+                    <button onClick={() => openModalRole()} className="bg-green-950 hover:bg-green-900 text-white px-6 py-3.5 rounded-2xl rounded-tr-none flex items-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all font-black text-xs uppercase tracking-widest active:scale-95 group/btn">
+                        <Plus size={16} className="text-emerald-400 group-hover/btn:rotate-90 transition-transform" /> Bentuk Peran Baru
                     </button>
                 )}
             </div>
 
-            <div className="bg-white rounded-[2rem] rounded-tr-none shadow-sm border-2 border-blue-50 overflow-hidden flex flex-col hover:border-cyan-100 transition-colors">
-                <div className="p-6 lg:p-8 border-b border-blue-50 bg-slate-50/50">
+            <div className="bg-white rounded-[2rem] rounded-tr-none shadow-sm border-2 border-green-50 overflow-hidden flex flex-col hover:border-emerald-100 transition-colors">
+                <div className="p-6 lg:p-8 border-b border-green-50 bg-slate-50/50">
                     <div className="relative max-w-md group">
-                        <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-cyan-500 transition-colors" size={18} />
+                        <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors" size={18} />
                         <input
                             type="text" placeholder="Kueri pencarian grup peran..."
                             value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-12 pr-5 py-3.5 bg-white border border-blue-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 outline-none text-sm font-bold text-slate-800 shadow-sm transition-all"
+                            className="w-full pl-12 pr-5 py-3.5 bg-white border border-green-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none text-sm font-bold text-slate-800 shadow-sm transition-all"
                         />
                     </div>
                 </div>
 
                 <div className="overflow-x-auto flex-1">
                     <table className="w-full text-left border-collapse min-w-[800px]">
-                        <thead className="bg-slate-50 text-[10px] font-black uppercase text-slate-400 tracking-widest border-b-2 border-blue-50">
+                        <thead className="bg-slate-50 text-[10px] font-black uppercase text-slate-400 tracking-widest border-b-2 border-green-50">
                             <tr>
-                                <th className="p-6 pl-8 cursor-pointer hover:text-cyan-600 transition-colors whitespace-nowrap" onClick={() => requestSort('name')}>
+                                <th className="p-6 pl-8 cursor-pointer hover:text-emerald-600 transition-colors whitespace-nowrap" onClick={() => requestSort('name')}>
                                     <div className="flex items-center gap-2">
                                         Identitas Grup Peran {sortConfig?.key === 'name' && (sortConfig.direction === 'asc' ? <ChevronUp size={14} /> : <ChevronDown size={14} />)}
                                     </div>
@@ -230,14 +230,14 @@ export const RolePage: React.FC = () => {
                                 {(canUpdate || canDelete) && <th className="p-6 pr-8 text-center whitespace-nowrap">Otoritas</th>}
                             </tr>
                         </thead>
-                        <tbody className="text-sm divide-y divide-blue-50">
+                        <tbody className="text-sm divide-y divide-green-50">
                             {isLoading ? (
-                                <tr><td colSpan={3} className="p-24 text-center text-slate-400 font-bold"><Loader2 className="animate-spin mx-auto mb-4 text-cyan-500" size={32} />Memuat grup...</td></tr>
+                                <tr><td colSpan={3} className="p-24 text-center text-slate-400 font-bold"><Loader2 className="animate-spin mx-auto mb-4 text-emerald-500" size={32} />Memuat grup...</td></tr>
                             ) : processedRoles.length > 0 ? (
                                 processedRoles.map(role => (
-                                    <tr key={role.id} className="hover:bg-blue-50/50 transition-colors group">
+                                    <tr key={role.id} className="hover:bg-green-50/50 transition-colors group">
                                         <td className="p-6 pl-8">
-                                            <span className="font-black text-slate-800 text-sm group-hover:text-blue-950 transition-colors uppercase tracking-widest">{role.name.replace(/_/g, ' ')}</span>
+                                            <span className="font-black text-slate-800 text-sm group-hover:text-green-950 transition-colors uppercase tracking-widest">{role.name.replace(/_/g, ' ')}</span>
                                         </td>
                                         <td className="p-6 text-slate-500 font-medium">
                                             {role.description || 'Tanpa atribusi deskripsi'}
@@ -247,8 +247,8 @@ export const RolePage: React.FC = () => {
                                                 <div className="flex justify-center gap-2">
                                                     {canUpdate && (
                                                         <>
-                                                            <button onClick={() => openModalAccess(role)} className="p-2.5 text-cyan-600 hover:text-white hover:bg-cyan-500 rounded-xl transition-all shadow-sm hover:shadow-md" title="Matriks Otorisasi"><ShieldCheck size={16} /></button>
-                                                            <button onClick={() => openModalRole(role)} className="p-2.5 text-blue-900 hover:text-white hover:bg-blue-950 rounded-xl transition-all shadow-sm hover:shadow-md" title="Koreksi"><Edit size={16} /></button>
+                                                            <button onClick={() => openModalAccess(role)} className="p-2.5 text-emerald-600 hover:text-white hover:bg-emerald-500 rounded-xl transition-all shadow-sm hover:shadow-md" title="Matriks Otorisasi"><ShieldCheck size={16} /></button>
+                                                            <button onClick={() => openModalRole(role)} className="p-2.5 text-green-900 hover:text-white hover:bg-green-950 rounded-xl transition-all shadow-sm hover:shadow-md" title="Koreksi"><Edit size={16} /></button>
                                                         </>
                                                     )}
                                                     {canDelete && (
@@ -260,22 +260,22 @@ export const RolePage: React.FC = () => {
                                     </tr>
                                 ))
                             ) : (
-                                <tr><td colSpan={3} className="p-24 text-center text-slate-400 font-bold bg-slate-50 border-2 border-dashed border-blue-100 rounded-[2rem]">Data grup kosong.</td></tr>
+                                <tr><td colSpan={3} className="p-24 text-center text-slate-400 font-bold bg-slate-50 border-2 border-dashed border-green-100 rounded-[2rem]">Data grup kosong.</td></tr>
                             )}
                         </tbody>
                     </table>
                 </div>
 
-                <div className="flex items-center justify-between px-6 lg:px-8 py-5 bg-white border-t-2 border-blue-50 rounded-b-[2rem] rounded-bl-none">
-                    <span className="text-[10px] text-slate-500 font-black uppercase tracking-widest border-l-2 border-cyan-400 pl-3">Total {meta.totalItems} Entitas</span>
+                <div className="flex items-center justify-between px-6 lg:px-8 py-5 bg-white border-t-2 border-green-50 rounded-b-[2rem] rounded-bl-none">
+                    <span className="text-[10px] text-slate-500 font-black uppercase tracking-widest border-l-2 border-emerald-400 pl-3">Total {meta.totalItems} Entitas</span>
                     <div className="flex items-center gap-4">
-                        <select value={limit} onChange={(e) => { setLimit(Number(e.target.value)); setPage(1); }} className="border border-blue-100 rounded-xl text-xs font-bold px-3 py-2 outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-500 bg-slate-50 text-slate-700 shadow-sm cursor-pointer transition-all">
+                        <select value={limit} onChange={(e) => { setLimit(Number(e.target.value)); setPage(1); }} className="border border-green-100 rounded-xl text-xs font-bold px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 bg-slate-50 text-slate-700 shadow-sm cursor-pointer transition-all">
                             <option value={10}>10 Baris</option>
                             <option value={25}>25 Baris</option>
                         </select>
-                        <div className="flex items-center gap-2 bg-slate-50 border border-blue-100 rounded-2xl rounded-tr-none p-1.5 shadow-sm">
+                        <div className="flex items-center gap-2 bg-slate-50 border border-green-100 rounded-2xl rounded-tr-none p-1.5 shadow-sm">
                             <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={meta.currentPage <= 1} className="px-4 py-2 text-[11px] font-black disabled:opacity-30 text-slate-700 hover:bg-white rounded-xl transition-colors">Prev</button>
-                            <span className="px-4 py-2 text-[11px] font-black text-white bg-blue-950 rounded-xl shadow-sm">{meta.currentPage} / {meta.totalPages || 1}</span>
+                            <span className="px-4 py-2 text-[11px] font-black text-white bg-green-950 rounded-xl shadow-sm">{meta.currentPage} / {meta.totalPages || 1}</span>
                             <button onClick={() => setPage(p => Math.min(meta.totalPages, p + 1))} disabled={meta.currentPage >= meta.totalPages || meta.totalPages === 0} className="px-4 py-2 text-[11px] font-black disabled:opacity-30 text-slate-700 hover:bg-white rounded-xl transition-colors">Next</button>
                         </div>
                     </div>
@@ -284,44 +284,44 @@ export const RolePage: React.FC = () => {
 
             {/* --- MODAL MATRIKS AKSES EKSKLUSIF --- */}
             {isModalAccessOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-950/80 backdrop-blur-sm p-4">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-green-950/80 backdrop-blur-sm p-4">
                     <div className="bg-white rounded-[2rem] rounded-tr-none w-full max-w-6xl max-h-[90vh] flex flex-col shadow-2xl animate-in zoom-in-95 duration-200 overflow-hidden border-4 border-white/20">
-                        <div className="p-6 lg:p-8 border-b-2 border-blue-50 flex justify-between items-center bg-white">
+                        <div className="p-6 lg:p-8 border-b-2 border-green-50 flex justify-between items-center bg-white">
                             <div className="flex items-center gap-4">
-                                <div className="p-3 bg-cyan-50 text-cyan-600 rounded-2xl rounded-tr-none border border-cyan-100 shadow-sm"><ShieldCheck size={24} /></div>
+                                <div className="p-3 bg-emerald-50 text-emerald-600 rounded-2xl rounded-tr-none border border-emerald-100 shadow-sm"><ShieldCheck size={24} /></div>
                                 <div>
                                     <h2 className="text-xl font-light text-slate-800 leading-tight">Sinkronisasi Matriks Otorisasi</h2>
-                                    <p className="text-[10px] text-cyan-600 mt-1 font-black tracking-widest uppercase">Identitas Mengikat: {currentRole?.name.replace(/_/g, ' ')}</p>
+                                    <p className="text-[10px] text-emerald-600 mt-1 font-black tracking-widest uppercase">Identitas Mengikat: {currentRole?.name.replace(/_/g, ' ')}</p>
                                 </div>
                             </div>
                             <button onClick={() => setIsModalAccessOpen(false)} className="w-10 h-10 flex items-center justify-center bg-slate-50 text-slate-500 rounded-xl hover:bg-red-50 hover:text-red-500 font-black transition-colors shadow-sm"><X size={18} /></button>
                         </div>
 
                         <div className="flex-1 p-6 lg:p-8 bg-slate-50/50 flex flex-col min-h-0 overflow-hidden">
-                            <div className="border-2 border-blue-50 rounded-3xl bg-white shadow-sm flex-1 overflow-auto custom-scrollbar">
+                            <div className="border-2 border-green-50 rounded-3xl bg-white shadow-sm flex-1 overflow-auto custom-scrollbar">
                                 <table className="w-full border-collapse relative min-w-[800px]">
-                                    <thead className="sticky top-0 z-20 bg-blue-50/90 backdrop-blur-sm shadow-sm border-b-2 border-blue-100">
+                                    <thead className="sticky top-0 z-20 bg-green-50/90 backdrop-blur-sm shadow-sm border-b-2 border-green-100">
                                         <tr>
-                                            <th className="p-5 pl-6 text-left text-[10px] uppercase tracking-widest font-black text-blue-900">Klaster Rute Menu</th>
+                                            <th className="p-5 pl-6 text-left text-[10px] uppercase tracking-widest font-black text-green-900">Klaster Rute Menu</th>
                                             {permissions.map(p => (
-                                                <th key={p.id} className="p-5 text-center text-[10px] font-black uppercase tracking-widest text-cyan-800 bg-cyan-100/50 border-l-2 border-white">
+                                                <th key={p.id} className="p-5 text-center text-[10px] font-black uppercase tracking-widest text-emerald-800 bg-emerald-100/50 border-l-2 border-white">
                                                     {p.name}
                                                 </th>
                                             ))}
                                             <th className="p-5 pr-6 text-center text-[10px] uppercase tracking-widest font-black text-slate-500 bg-slate-200/50 border-l-2 border-white">Beri Mutlak</th>
                                         </tr>
                                     </thead>
-                                    <tbody className="divide-y divide-blue-50 text-sm">
+                                    <tbody className="divide-y divide-green-50 text-sm">
                                         {flatMenusMatrix.map((menu: any) => {
                                             const currentMenuAccess = accessData.find(a => a.menuId === menu.id);
                                             const isAllSelected = currentMenuAccess?.permissionIds.length === permissions.length;
 
                                             return (
-                                                <tr key={menu.id} className={`${menu.level > 0 ? 'bg-white' : 'bg-slate-50'} hover:bg-blue-50/50 transition-colors`}>
-                                                    <td className="p-5 pl-6 border-r-2 border-blue-50">
+                                                <tr key={menu.id} className={`${menu.level > 0 ? 'bg-white' : 'bg-slate-50'} hover:bg-green-50/50 transition-colors`}>
+                                                    <td className="p-5 pl-6 border-r-2 border-green-50">
                                                         <div className="flex items-center gap-3" style={{ paddingLeft: `${menu.level * 24}px` }}>
                                                             {menu.level > 0 && <ChevronRight size={16} className="text-slate-300" />}
-                                                            {menu.level > 0 ? <FolderTree size={18} className="text-cyan-500" /> : <Layout size={18} className="text-blue-950" />}
+                                                            {menu.level > 0 ? <FolderTree size={18} className="text-emerald-500" /> : <Layout size={18} className="text-green-950" />}
                                                             <span className={`${menu.level === 0 ? 'font-black text-slate-800' : 'font-bold text-slate-600'}`}>
                                                                 {menu.title}
                                                             </span>
@@ -332,12 +332,12 @@ export const RolePage: React.FC = () => {
                                                         const isChecked = currentMenuAccess?.permissionIds.includes(perm.id) || false;
 
                                                         return (
-                                                            <td key={perm.id} className="p-5 text-center border-r-2 border-blue-50 bg-white">
+                                                            <td key={perm.id} className="p-5 text-center border-r-2 border-green-50 bg-white">
                                                                 {isVisibility ? (
                                                                     <div className="flex justify-center">
                                                                         <button
                                                                             type="button" onClick={() => toggleAccess(menu.id, perm.id)}
-                                                                            className={`p-2 rounded-xl transition-all border-2 flex items-center justify-center ${isChecked ? 'bg-cyan-50 text-cyan-600 border-cyan-400 shadow-sm' : 'bg-slate-50 text-slate-300 hover:bg-slate-100 border-slate-100'}`}
+                                                                            className={`p-2 rounded-xl transition-all border-2 flex items-center justify-center ${isChecked ? 'bg-emerald-50 text-emerald-600 border-emerald-400 shadow-sm' : 'bg-slate-50 text-slate-300 hover:bg-slate-100 border-slate-100'}`}
                                                                             title={isChecked ? 'Ditampilkan' : 'Disembunyikan'}
                                                                         >
                                                                             {isChecked ? <Eye size={18} /> : <EyeOff size={18} />}
@@ -346,7 +346,7 @@ export const RolePage: React.FC = () => {
                                                                 ) : (
                                                                     <input
                                                                         type="checkbox" checked={isChecked} onChange={() => toggleAccess(menu.id, perm.id)}
-                                                                        className="w-5 h-5 accent-cyan-500 cursor-pointer rounded transition-transform active:scale-90"
+                                                                        className="w-5 h-5 accent-emerald-500 cursor-pointer rounded transition-transform active:scale-90"
                                                                     />
                                                                 )}
                                                             </td>
@@ -355,7 +355,7 @@ export const RolePage: React.FC = () => {
                                                     <td className="p-5 pr-6 text-center bg-slate-50/80">
                                                         <button
                                                             type="button" onClick={() => handleSelectAllInRow(menu.id)}
-                                                            className={`p-2 rounded-xl transition-all border-2 ${isAllSelected ? 'bg-blue-950 text-white border-blue-950 shadow-sm' : 'bg-white text-slate-400 border-slate-200 hover:border-blue-950 hover:text-blue-950'}`}
+                                                            className={`p-2 rounded-xl transition-all border-2 ${isAllSelected ? 'bg-green-950 text-white border-green-950 shadow-sm' : 'bg-white text-slate-400 border-slate-200 hover:border-green-950 hover:text-green-950'}`}
                                                         >
                                                             <CheckSquare size={18} />
                                                         </button>
@@ -368,9 +368,9 @@ export const RolePage: React.FC = () => {
                             </div>
                         </div>
 
-                        <div className="p-6 lg:px-8 border-t-2 border-blue-50 flex justify-end gap-4 bg-white rounded-b-[2rem]">
+                        <div className="p-6 lg:px-8 border-t-2 border-green-50 flex justify-end gap-4 bg-white rounded-b-[2rem]">
                             <button onClick={() => setIsModalAccessOpen(false)} className="px-6 py-3 bg-slate-50 border border-slate-200 text-slate-700 font-black text-xs rounded-xl hover:bg-slate-100 transition-colors uppercase tracking-wider">Batal</button>
-                            <button onClick={handleSaveAccess} className="px-8 py-3 rounded-xl bg-blue-950 hover:bg-blue-900 text-white text-xs font-black uppercase tracking-widest shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all active:scale-95">
+                            <button onClick={handleSaveAccess} className="px-8 py-3 rounded-xl bg-green-950 hover:bg-green-900 text-white text-xs font-black uppercase tracking-widest shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all active:scale-95">
                                 Terapkan Matriks
                             </button>
                         </div>
@@ -380,14 +380,14 @@ export const RolePage: React.FC = () => {
 
             {/* MODAL CRUD ROLE */}
             {isModalRoleOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-950/80 backdrop-blur-sm p-4 overflow-y-auto">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-green-950/80 backdrop-blur-sm p-4 overflow-y-auto">
                     <div className="bg-white rounded-[2rem] rounded-tr-none w-full max-w-xl shadow-2xl flex flex-col border-4 border-white/20 animate-in zoom-in-95 duration-200">
-                        <div className="px-8 py-6 border-b-2 border-blue-50 flex justify-between items-center bg-white">
+                        <div className="px-8 py-6 border-b-2 border-green-50 flex justify-between items-center bg-white">
                             <div className="flex items-center gap-4">
-                                <div className="p-3 bg-blue-50 text-blue-950 rounded-2xl rounded-tr-none border border-blue-100 shadow-sm"><ShieldCheck size={24} className="text-cyan-600" /></div>
+                                <div className="p-3 bg-green-50 text-green-950 rounded-2xl rounded-tr-none border border-green-100 shadow-sm"><ShieldCheck size={24} className="text-emerald-600" /></div>
                                 <div>
                                     <h2 className="text-xl font-light text-slate-800 leading-tight">{currentRole ? 'Koreksi Identitas Peran' : 'Entitas Peran Baru'}</h2>
-                                    <p className="text-[10px] font-black text-cyan-600 uppercase tracking-widest mt-1">Grup Otorisasi</p>
+                                    <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest mt-1">Grup Otorisasi</p>
                                 </div>
                             </div>
                             <button onClick={() => setIsModalRoleOpen(false)} className="w-10 h-10 flex items-center justify-center bg-slate-50 text-slate-500 rounded-xl hover:bg-red-50 hover:text-red-500 font-black transition-colors shadow-sm"><X size={18} /></button>
@@ -396,18 +396,18 @@ export const RolePage: React.FC = () => {
                         <div className="p-8 bg-slate-50/50 space-y-6">
                             <div>
                                 <label className="block text-[11px] font-black text-slate-500 mb-2 uppercase tracking-widest">Identitas Grup Peran *</label>
-                                <input required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} className="w-full p-3.5 bg-white border border-blue-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 outline-none text-sm font-bold text-slate-800 shadow-sm transition-all" placeholder="Contoh: EDITOR_EKSEKUTIF" />
+                                <input required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} className="w-full p-3.5 bg-white border border-green-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none text-sm font-bold text-slate-800 shadow-sm transition-all" placeholder="Contoh: EDITOR_EKSEKUTIF" />
                             </div>
 
                             <div>
                                 <label className="block text-[11px] font-black text-slate-500 mb-2 uppercase tracking-widest">Atribusi Deskripsi</label>
-                                <textarea value={formData.description} onChange={e => setFormData({ ...formData, description: e.target.value })} className="w-full p-4 bg-white border border-blue-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 outline-none text-sm font-medium text-slate-700 shadow-sm transition-all resize-none leading-relaxed h-24" placeholder="Tuliskan atribusi ringkas..." />
+                                <textarea value={formData.description} onChange={e => setFormData({ ...formData, description: e.target.value })} className="w-full p-4 bg-white border border-green-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none text-sm font-medium text-slate-700 shadow-sm transition-all resize-none leading-relaxed h-24" placeholder="Tuliskan atribusi ringkas..." />
                             </div>
                         </div>
 
-                        <div className="px-8 py-5 border-t-2 border-blue-50 bg-white flex justify-end gap-4 rounded-b-[2rem]">
+                        <div className="px-8 py-5 border-t-2 border-green-50 bg-white flex justify-end gap-4 rounded-b-[2rem]">
                             <button onClick={() => setIsModalRoleOpen(false)} className="px-6 py-3 bg-slate-50 border border-slate-200 text-slate-700 font-black text-xs rounded-xl hover:bg-slate-100 transition-colors uppercase tracking-wider">Batal</button>
-                            <button onClick={handleSubmitRole} className="px-8 py-3 bg-blue-950 hover:bg-blue-900 text-white font-black text-xs rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all uppercase tracking-widest flex items-center gap-2">
+                            <button onClick={handleSubmitRole} className="px-8 py-3 bg-green-950 hover:bg-green-900 text-white font-black text-xs rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all uppercase tracking-widest flex items-center gap-2">
                                 Simpan Peran
                             </button>
                         </div>
@@ -417,7 +417,7 @@ export const RolePage: React.FC = () => {
 
             {/* MODAL HAPUS */}
             {isDeleteModalOpen && (
-                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-blue-950/80 backdrop-blur-sm p-4">
+                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-green-950/80 backdrop-blur-sm p-4">
                     <div className="bg-white rounded-[2rem] rounded-tr-none w-full max-w-sm shadow-2xl text-center p-8 border-4 border-white/20 animate-in zoom-in-95 duration-200">
                         <div className="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-red-100">
                             <AlertTriangle className="text-red-500" size={36} />
@@ -434,14 +434,14 @@ export const RolePage: React.FC = () => {
 
             {/* MODAL SUKSES */}
             {isSuccessModalOpen && (
-                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-blue-950/80 backdrop-blur-sm p-4">
+                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-green-950/80 backdrop-blur-sm p-4">
                     <div className="bg-white rounded-[2rem] rounded-tr-none w-full max-w-sm shadow-2xl text-center p-8 border-4 border-white/20 animate-in zoom-in-95 duration-200">
-                        <div className="w-20 h-20 bg-cyan-50 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-cyan-100">
-                            <CheckCircle className="text-cyan-500" size={40} />
+                        <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-emerald-100">
+                            <CheckCircle className="text-emerald-500" size={40} />
                         </div>
                         <h2 className="text-xl font-black text-slate-900 tracking-tight">Berhasil!</h2>
                         <p className="text-sm text-slate-500 mt-2 font-medium leading-relaxed">{successMessage}</p>
-                        <button onClick={() => setIsSuccessModalOpen(false)} className="mt-8 w-full py-3.5 bg-blue-950 hover:bg-blue-900 text-white font-black text-xs rounded-xl shadow-lg hover:shadow-xl transition-all uppercase tracking-widest active:scale-95">Tutup Panel</button>
+                        <button onClick={() => setIsSuccessModalOpen(false)} className="mt-8 w-full py-3.5 bg-green-950 hover:bg-green-900 text-white font-black text-xs rounded-xl shadow-lg hover:shadow-xl transition-all uppercase tracking-widest active:scale-95">Tutup Panel</button>
                     </div>
                 </div>
             )}

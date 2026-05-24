@@ -119,41 +119,41 @@ export const MediaPage: React.FC = () => {
     <div className="space-y-8 max-w-7xl mx-auto pb-10 font-sans animate-in fade-in duration-300">
       
       {/* Header Utama */}
-      <div className="bg-white p-6 lg:p-8 rounded-[2rem] rounded-tr-none border-2 border-blue-50 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:border-cyan-100 transition-colors">
+      <div className="bg-white p-6 lg:p-8 rounded-[2rem] rounded-tr-none border-2 border-green-50 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:border-emerald-100 transition-colors">
         <div>
           <h1 className="text-2xl lg:text-3xl font-light text-slate-800 tracking-tight">Manajemen Pustaka Media</h1>
           <p className="text-sm text-slate-500 font-medium mt-2">Pusat kendali seluruh aset grafis, video, dan dokumen pada server.</p>
         </div>
         
-        <div className="flex items-center gap-5 w-full md:w-auto justify-between md:justify-end border-t-2 md:border-t-0 pt-4 md:pt-0 border-blue-50">
+        <div className="flex items-center gap-5 w-full md:w-auto justify-between md:justify-end border-t-2 md:border-t-0 pt-4 md:pt-0 border-green-50">
           <div className="text-left md:text-right">
             <span className="text-[10px] font-black text-slate-400 block uppercase tracking-widest">Total Kapasitas Terpakai</span>
-            <span className="text-sm font-mono font-black text-cyan-600">{totalStorageMB} MB</span>
+            <span className="text-sm font-mono font-black text-emerald-600">{totalStorageMB} MB</span>
           </div>
           <button 
             onClick={fetchMediaAssets} disabled={isLoading}
-            className="p-3.5 bg-blue-50 hover:bg-cyan-50 text-blue-900 hover:text-cyan-700 rounded-2xl rounded-tr-none border border-blue-100 transition-colors shadow-sm group"
+            className="p-3.5 bg-green-50 hover:bg-emerald-50 text-green-900 hover:text-emerald-700 rounded-2xl rounded-tr-none border border-green-100 transition-colors shadow-sm group"
             title="Segarkan Pustaka"
           >
-            <RefreshCw size={18} className={isLoading ? "animate-spin text-cyan-500" : "group-hover:rotate-180 transition-transform"} />
+            <RefreshCw size={18} className={isLoading ? "animate-spin text-emerald-500" : "group-hover:rotate-180 transition-transform"} />
           </button>
         </div>
       </div>
 
       {/* Uploader Multi-file */}
-      <div className="bg-white p-6 lg:p-8 rounded-[2rem] rounded-tr-none border-2 border-blue-50 shadow-sm hover:border-cyan-100 transition-colors">
-        <div className="w-full border-2 border-dashed border-blue-200 hover:border-cyan-500 rounded-[2rem] rounded-tr-none bg-blue-50/50 p-10 text-center transition-colors relative group">
+      <div className="bg-white p-6 lg:p-8 rounded-[2rem] rounded-tr-none border-2 border-green-50 shadow-sm hover:border-emerald-100 transition-colors">
+        <div className="w-full border-2 border-dashed border-green-200 hover:border-emerald-500 rounded-[2rem] rounded-tr-none bg-green-50/50 p-10 text-center transition-colors relative group">
           {isUploading ? (
             <div className="space-y-4">
-              <Loader2 className="animate-spin mx-auto text-cyan-500" size={40} />
-              <p className="text-sm font-black text-blue-950 uppercase tracking-widest">Mengunggah & Mendaftarkan Aset...</p>
+              <Loader2 className="animate-spin mx-auto text-emerald-500" size={40} />
+              <p className="text-sm font-black text-green-950 uppercase tracking-widest">Mengunggah & Mendaftarkan Aset...</p>
             </div>
           ) : (
             <div>
-              <div className="w-16 h-16 bg-white rounded-2xl rounded-tr-none shadow-sm border border-blue-100 flex items-center justify-center text-cyan-500 mx-auto mb-4 group-hover:scale-110 transition-transform">
+              <div className="w-16 h-16 bg-white rounded-2xl rounded-tr-none shadow-sm border border-green-100 flex items-center justify-center text-emerald-500 mx-auto mb-4 group-hover:scale-110 transition-transform">
                 <Upload size={24} />
               </div>
-              <span className="text-sm font-black text-blue-950 block uppercase tracking-widest">Letakkan File atau Klik untuk Mengunggah</span>
+              <span className="text-sm font-black text-green-950 block uppercase tracking-widest">Letakkan File atau Klik untuk Mengunggah</span>
               <span className="text-[11px] text-slate-500 block mt-2 font-medium">Mendukung Gambar, Video, PDF, Word, Excel, dll.</span>
               <input 
                 type="file" multiple 
@@ -168,49 +168,49 @@ export const MediaPage: React.FC = () => {
       </div>
 
       {/* Bar Pencarian & Filter */}
-      <div className="flex flex-col md:flex-row justify-between items-stretch md:items-center gap-6 bg-white p-5 rounded-[2rem] rounded-tr-none border-2 border-blue-50 shadow-sm">
+      <div className="flex flex-col md:flex-row justify-between items-stretch md:items-center gap-6 bg-white p-5 rounded-[2rem] rounded-tr-none border-2 border-green-50 shadow-sm">
         <div className="relative flex-1 group">
-          <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-cyan-500 transition-colors" size={18} />
+          <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors" size={18} />
           <input 
             value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
-            className="w-full pl-12 pr-5 py-3.5 bg-white border border-blue-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 outline-none text-sm font-bold text-slate-800 shadow-sm transition-all"
+            className="w-full pl-12 pr-5 py-3.5 bg-white border border-green-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none text-sm font-bold text-slate-800 shadow-sm transition-all"
             placeholder="Kueri pencarian arsip media..." 
           />
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 bg-slate-50 p-2 rounded-2xl rounded-tr-none border border-blue-100">
+        <div className="flex flex-wrap items-center gap-2 bg-slate-50 p-2 rounded-2xl rounded-tr-none border border-green-100">
           <button 
             onClick={() => setFilterType('ALL')}
-            className={`px-4 py-2 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all ${filterType === 'ALL' ? 'bg-blue-950 text-white shadow-sm' : 'text-slate-500 hover:text-blue-950 hover:bg-white'}`}
+            className={`px-4 py-2 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all ${filterType === 'ALL' ? 'bg-green-950 text-white shadow-sm' : 'text-slate-500 hover:text-green-950 hover:bg-white'}`}
           >
             Semua ({mediaList.length})
           </button>
           <button 
             onClick={() => setFilterType('IMAGE')}
-            className={`px-4 py-2 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${filterType === 'IMAGE' ? 'bg-blue-950 text-white shadow-sm' : 'text-slate-500 hover:text-blue-950 hover:bg-white'}`}
+            className={`px-4 py-2 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${filterType === 'IMAGE' ? 'bg-green-950 text-white shadow-sm' : 'text-slate-500 hover:text-green-950 hover:bg-white'}`}
           >
-            <ImageIcon size={14} className={filterType === 'IMAGE' ? 'text-cyan-400' : 'text-cyan-500'} /> Gambar
+            <ImageIcon size={14} className={filterType === 'IMAGE' ? 'text-emerald-400' : 'text-emerald-500'} /> Gambar
           </button>
           <button 
             onClick={() => setFilterType('VIDEO')}
-            className={`px-4 py-2 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${filterType === 'VIDEO' ? 'bg-blue-950 text-white shadow-sm' : 'text-slate-500 hover:text-blue-950 hover:bg-white'}`}
+            className={`px-4 py-2 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${filterType === 'VIDEO' ? 'bg-green-950 text-white shadow-sm' : 'text-slate-500 hover:text-green-950 hover:bg-white'}`}
           >
-            <Video size={14} className={filterType === 'VIDEO' ? 'text-cyan-400' : 'text-cyan-500'} /> Video
+            <Video size={14} className={filterType === 'VIDEO' ? 'text-emerald-400' : 'text-emerald-500'} /> Video
           </button>
           <button 
             onClick={() => setFilterType('DOCUMENT')}
-            className={`px-4 py-2 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${filterType === 'DOCUMENT' ? 'bg-blue-950 text-white shadow-sm' : 'text-slate-500 hover:text-blue-950 hover:bg-white'}`}
+            className={`px-4 py-2 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${filterType === 'DOCUMENT' ? 'bg-green-950 text-white shadow-sm' : 'text-slate-500 hover:text-green-950 hover:bg-white'}`}
           >
-            <FileText size={14} className={filterType === 'DOCUMENT' ? 'text-cyan-400' : 'text-cyan-500'} /> Dokumen
+            <FileText size={14} className={filterType === 'DOCUMENT' ? 'text-emerald-400' : 'text-emerald-500'} /> Dokumen
           </button>
         </div>
       </div>
 
       {/* Grid Pustaka */}
       {isLoading ? (
-        <div className="py-24 text-center"><Loader2 className="animate-spin mx-auto text-cyan-500" size={40} /></div>
+        <div className="py-24 text-center"><Loader2 className="animate-spin mx-auto text-emerald-500" size={40} /></div>
       ) : filteredMedia.length === 0 ? (
-        <div className="p-20 bg-slate-50 rounded-[2rem] border-2 border-dashed border-blue-100 text-center">
+        <div className="p-20 bg-slate-50 rounded-[2rem] border-2 border-dashed border-green-100 text-center">
           <Layers className="mx-auto text-slate-300 mb-4" size={48} />
           <p className="text-sm font-black text-slate-400 uppercase tracking-widest">Arsip Tidak Ditemukan</p>
           <p className="text-sm text-slate-500 mt-2 font-medium">Belum ada aset fisik yang sesuai dengan parameter filter atau kueri pencarian Anda.</p>
@@ -226,14 +226,14 @@ export const MediaPage: React.FC = () => {
             const fileExtension = item.fileName.split('.').pop()?.toUpperCase() || 'DOC';
 
             return (
-              <div key={item.id} className="bg-white border-2 border-blue-50 rounded-[1.5rem] rounded-tr-none overflow-hidden shadow-sm hover:border-cyan-400 hover:shadow-md transition-all flex flex-col justify-between group">
+              <div key={item.id} className="bg-white border-2 border-green-50 rounded-[1.5rem] rounded-tr-none overflow-hidden shadow-sm hover:border-emerald-400 hover:shadow-md transition-all flex flex-col justify-between group">
                 
-                <div className="aspect-square bg-blue-50 relative overflow-hidden flex items-center justify-center border-b-2 border-blue-50">
+                <div className="aspect-square bg-green-50 relative overflow-hidden flex items-center justify-center border-b-2 border-green-50">
                   {isVideo && (
                     <>
                       <video src={fullUrl} className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-blue-950/40 flex items-center justify-center backdrop-blur-sm">
-                        <div className="p-3 bg-cyan-500 text-white rounded-2xl rounded-tr-none shadow-md"><Video size={20} /></div>
+                      <div className="absolute inset-0 bg-green-950/40 flex items-center justify-center backdrop-blur-sm">
+                        <div className="p-3 bg-emerald-500 text-white rounded-2xl rounded-tr-none shadow-md"><Video size={20} /></div>
                       </div>
                     </>
                   )}
@@ -242,15 +242,15 @@ export const MediaPage: React.FC = () => {
                   )}
                   {isDocument && (
                     <div className="flex flex-col items-center justify-center w-full h-full bg-slate-50 text-slate-400">
-                      <FileText size={48} className="mb-3 text-slate-300 group-hover:text-cyan-500 transition-colors" />
+                      <FileText size={48} className="mb-3 text-slate-300 group-hover:text-emerald-500 transition-colors" />
                       <span className="text-[11px] font-black uppercase tracking-widest bg-white px-3 py-1 rounded-xl shadow-sm border border-slate-100">{fileExtension}</span>
                     </div>
                   )}
 
-                  <div className="absolute inset-x-0 top-0 p-3 bg-gradient-to-b from-blue-950/70 to-transparent flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="absolute inset-x-0 top-0 p-3 bg-gradient-to-b from-green-950/70 to-transparent flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
                     <a 
                       href={fullUrl} target="_blank" rel="noreferrer"
-                      className="p-2 bg-white/90 hover:bg-white text-blue-950 rounded-xl shadow-sm transition-colors"
+                      className="p-2 bg-white/90 hover:bg-white text-green-950 rounded-xl shadow-sm transition-colors"
                       title="Buka File"
                     >
                       <ExternalLink size={14} />
@@ -267,7 +267,7 @@ export const MediaPage: React.FC = () => {
                   <div className="absolute bottom-3 right-3 left-3">
                     <button 
                       onClick={() => handleCopyUrl(item.fileUrl, item.id)}
-                      className={`w-full py-2.5 px-3 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 shadow-md transition-all ${isCopied ? 'bg-cyan-500 text-white' : 'bg-blue-950/90 hover:bg-blue-950 text-white opacity-0 group-hover:opacity-100 backdrop-blur-sm'}`}
+                      className={`w-full py-2.5 px-3 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 shadow-md transition-all ${isCopied ? 'bg-emerald-500 text-white' : 'bg-green-950/90 hover:bg-green-950 text-white opacity-0 group-hover:opacity-100 backdrop-blur-sm'}`}
                     >
                       {isCopied ? <><Check size={14}/> Disalin!</> : <><Copy size={14}/> Salin Tautan</>}
                     </button>
@@ -275,7 +275,7 @@ export const MediaPage: React.FC = () => {
                 </div>
 
                 <div className="p-4 truncate bg-white">
-                  <span className="text-[13px] font-black text-slate-800 block truncate group-hover:text-cyan-600 transition-colors" title={item.fileName}>
+                  <span className="text-[13px] font-black text-slate-800 block truncate group-hover:text-emerald-600 transition-colors" title={item.fileName}>
                     {item.fileName}
                   </span>
                   <div className="flex items-center justify-between mt-2 text-[10px] text-slate-500 font-medium">

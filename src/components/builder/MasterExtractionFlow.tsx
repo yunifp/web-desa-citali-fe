@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layers, ArrowDown } from 'lucide-react';
+import { Layers } from 'lucide-react';
 
 interface FlowStep {
   phase: string;
@@ -8,63 +8,70 @@ interface FlowStep {
 }
 
 interface MasterExtractionFlowProps {
-  badge: string;
-  title: string;
-  subtitle: string;
-  steps: FlowStep[];
+  badge?: string;
+  title?: string;
+  subtitle?: string;
+  steps?: FlowStep[];
 }
 
 export const MasterExtractionFlow: React.FC<MasterExtractionFlowProps> = ({
-  badge,
-  title,
-  subtitle,
-  steps
+  badge = "Prosedur Layanan",
+  title = "Alur Pelayanan Administrasi Publik",
+  subtitle = "Panduan ringkas bagi warga Desa Citali untuk mengurus dokumen administrasi kependudukan di kantor balai desa.",
+  steps = [
+    { phase: "01", title: "Persiapan Berkas", desc: "Warga melengkapi persyaratan dokumen dasar seperti KTP, KK, dan surat pengantar dari RT/RW setempat." },
+    { phase: "02", title: "Verifikasi Loket", desc: "Penyerahan berkas ke petugas pelayanan balai desa untuk diperiksa kelengkapannya." },
+    { phase: "03", title: "Proses Dokumen", desc: "Pencetakan dan pengesahan dokumen oleh Kepala Desa atau perangkat yang berwenang." },
+    { phase: "04", title: "Pengambilan", desc: "Warga mengambil dokumen yang telah selesai diproses tanpa dipungut biaya (Gratis)." }
+  ]
 }) => {
   return (
-    <section className="py-24 bg-slate-50 font-sans select-none overflow-hidden">
-      <div className="max-w-4xl mx-auto px-6 space-y-16">
+    <section className="py-24 bg-white font-sans select-none overflow-hidden">
+      <div className="max-w-4xl mx-auto px-6 space-y-20">
         
+        {/* Header */}
         <div className="text-center space-y-6 flex flex-col items-center">
-          <span className="text-[11px] font-black text-cyan-600 uppercase tracking-widest block relative after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-12 after:h-1 after:bg-blue-900 after:rounded-full">
+          <span className="text-[11px] font-black bg-green-50 px-5 py-2 rounded-full text-green-800 uppercase tracking-widest block shadow-sm">
             {badge}
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-slate-700 tracking-tight mt-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-green-950 tracking-tight mt-6">
             {title}
           </h2>
-          <p className="text-sm text-slate-500 font-medium max-w-lg mx-auto leading-relaxed">
+          <p className="text-sm text-green-900/70 font-bold max-w-lg mx-auto leading-relaxed">
             {subtitle}
           </p>
         </div>
 
-        <div className="space-y-4 relative">
-          {steps.map((st, idx) => (
-            <div key={idx} className="relative">
-              <div className="p-8 bg-white rounded-[2rem] rounded-tr-none border-2 border-blue-50 shadow-md flex flex-col sm:flex-row items-start sm:items-center gap-6 group hover:border-blue-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                
-                <div className="w-14 h-14 rounded-2xl bg-blue-50 group-hover:bg-blue-950 text-blue-900 group-hover:text-cyan-400 font-black text-base flex items-center justify-center flex-shrink-0 transition-colors shadow-sm">
-                  {st.phase}
-                </div>
+        {/* Timeline Steps */}
+        <div className="space-y-6 relative">
+          {/* Vertical Line Connector (Desktop) */}
+          <div className="hidden sm:block absolute left-[4.5rem] top-10 bottom-10 w-1.5 bg-green-50 rounded-full z-0" />
 
-                <div className="space-y-2 flex-1 border-l-2 border-transparent sm:border-blue-50 sm:pl-6 group-hover:border-cyan-100 transition-colors">
-                  <h3 className="text-base font-black text-slate-800 tracking-tight group-hover:text-blue-950 transition-colors">
+          {steps.map((st, idx) => (
+            <div key={idx} className="relative z-10 flex flex-col sm:flex-row items-center gap-6 group">
+              
+              {/* Number Circle */}
+              <div className="w-16 h-16 rounded-[24px] bg-white shadow-[0_10px_20px_rgba(0,0,0,0.08)] text-green-900 font-black text-xl flex items-center justify-center flex-shrink-0 group-hover:bg-green-950 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-3 z-10">
+                {st.phase}
+              </div>
+
+              {/* Card Text */}
+              <div className="flex-1 w-full bg-white p-8 rounded-[32px] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.06)] group-hover:shadow-[0_20px_40px_-15px_rgba(20,83,45,0.15)] transition-all duration-300 transform group-hover:-translate-y-1 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                
+                <div className="space-y-3">
+                  <h3 className="text-lg font-black text-green-950 tracking-tight">
                     {st.title}
                   </h3>
-                  <p className="text-sm text-slate-600 font-medium leading-relaxed">
+                  <p className="text-sm text-green-800/80 font-bold leading-relaxed">
                     {st.desc}
                   </p>
                 </div>
 
-                <div className="hidden sm:flex w-10 h-10 rounded-xl bg-slate-50 items-center justify-center text-slate-400 flex-shrink-0 group-hover:text-cyan-500 group-hover:bg-cyan-50 transition-colors">
-                  <Layers size={18} />
+                <div className="hidden md:flex w-12 h-12 rounded-2xl bg-green-50 items-center justify-center text-green-300 flex-shrink-0 group-hover:text-green-700 group-hover:bg-green-100 transition-colors shadow-inner">
+                  <Layers size={20} />
                 </div>
 
               </div>
-
-              {idx < steps.length - 1 && (
-                <div className="flex justify-center my-4">
-                  <ArrowDown size={20} className="text-blue-200 animate-bounce" />
-                </div>
-              )}
             </div>
           ))}
         </div>

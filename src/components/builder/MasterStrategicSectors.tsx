@@ -16,56 +16,59 @@ export interface MasterStrategicSectorsProps {
 }
 
 export const MasterStrategicSectors: React.FC<MasterStrategicSectorsProps> = ({
-  badge = "Sektor Strategis",
-  title = "Sektor-sektor utama yang menopang rencana kami",
+  badge = "Fokus Pembangunan",
+  title = "Sektor strategis untuk kemajuan desa",
   cards = []
 }) => {
   return (
-    <section className="py-24 bg-white font-sans overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 space-y-12">
+    <section className="py-24 bg-white font-sans overflow-hidden relative">
+      {/* Background Ornament */}
+      <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-green-50 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 space-y-16 relative z-10">
         
-        {/* Posisi Header: Diubah menjadi sejajar di tengah dengan aksen */}
-        <div className="flex flex-col items-center text-center space-y-3 max-w-2xl mx-auto">
-          <span className="text-[11px] font-black text-blue-900 bg-blue-50 px-4 py-1.5 rounded-md uppercase tracking-widest border border-blue-100">
+        {/* Header Center */}
+        <div className="flex flex-col items-center text-center space-y-5 max-w-3xl mx-auto">
+          <span className="text-[11px] font-black text-green-800 bg-white shadow-[0_5px_15px_rgba(0,0,0,0.06)] px-5 py-2 rounded-full uppercase tracking-widest inline-block">
             {badge}
           </span>
-          <h2 className="text-2xl sm:text-4xl font-black text-slate-800 tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-light text-green-950 tracking-tight leading-snug">
             {title}
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {cards.map((sec, idx) => (
             <div 
               key={idx}
-              // Bentuk Kartu Daun (Leaf Shape)
-              className="relative overflow-hidden h-[420px] rounded-tl-[60px] rounded-br-[60px] rounded-tr-xl rounded-bl-xl bg-blue-950 shadow-lg group flex flex-col justify-between p-6 hover:shadow-2xl transition-shadow"
+              // Bentuk Kartu Kapsul Vertikal Penuh (Pill shape)
+              className="relative overflow-hidden h-[450px] rounded-[100px] bg-green-950 shadow-[0_15px_40px_-15px_rgba(20,83,45,0.3)] hover:shadow-[0_20px_50px_-15px_rgba(20,83,45,0.4)] hover:-translate-y-2 group flex flex-col justify-between p-8 transition-all duration-500"
             >
               <img 
                 src={sec.image} 
                 alt={sec.title} 
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 z-0 opacity-70"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 z-0 opacity-60 group-hover:opacity-40"
               />
-              {/* Overlay Gradient Biru Tua */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/60 to-blue-950 z-10" />
+              {/* Overlay Gradient Hijau Tua */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-950/50 to-green-950 z-10" />
 
-              {/* Ikon dipindah ke Kanan Atas */}
-              <div className="relative z-20 self-end w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-sm font-bold text-xl">
+              {/* Ikon di Tengah Atas */}
+              <div className="relative z-20 self-center w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white shadow-inner font-bold text-2xl mt-4">
                 {sec.icon}
               </div>
 
               {/* Teks & Panah di Bawah */}
-              <div className="relative z-20 space-y-4">
-                <h3 className="text-xl font-black text-white tracking-tight leading-snug">
+              <div className="relative z-20 space-y-6 text-center">
+                <h3 className="text-2xl font-black text-white tracking-tight leading-snug drop-shadow-md">
                   {sec.title}
                 </h3>
 
                 <Link 
                   to={sec.url || '#'} 
-                  className="w-full py-3 rounded-xl bg-cyan-500 hover:bg-white flex items-center justify-between px-5 text-blue-950 font-black transition-colors"
+                  className="w-14 h-14 mx-auto rounded-full bg-white hover:bg-green-300 flex items-center justify-center text-green-950 font-black transition-all shadow-lg transform group-hover:scale-110"
+                  title="Lihat Detail"
                 >
-                  <span className="text-xs uppercase tracking-wider">Eksplorasi</span>
-                  <ArrowRight size={16} />
+                  <ArrowRight size={20} />
                 </Link>
               </div>
 

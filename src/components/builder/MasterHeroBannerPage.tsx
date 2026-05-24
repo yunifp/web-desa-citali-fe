@@ -24,15 +24,15 @@ export const MasterHeroBannerPage: React.FC<MasterHeroBannerPageProps> = ({ slid
   const displaySlides = slides.length > 0 ? slides : [
     {
       image: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?q=80&w=2070&auto=format&fit=crop", 
-      title: "Mendorong transformasi ekonomi dan investasi global demi masa depan Indonesia",
-      desc: "Mengakselerasi lompatan industrialisasi hilir..."
+      title: "Membangun Desa Citali yang Mandiri, Inovatif, dan Sejahtera",
+      desc: "Menghadirkan pelayanan publik yang transparan dan memberdayakan potensi lokal secara berkelanjutan."
     }
   ];
 
   const displayLinks = quickLinks.length > 0 ? quickLinks : [
-    { label: "Tentang Danantara Indonesia", url: "/tentang-kami/profil" },
-    { label: "Cara Kami Mengelola Aset", url: "/investor/keuangan" },
-    { label: "Cara Kami Berinvestasi", url: "/investor/prospektus" }
+    { label: "Profil Desa & Aparatur", url: "/p/profil-desa" },
+    { label: "Layanan Mandiri Warga", url: "/p/layanan" },
+    { label: "Transparansi Dana Desa", url: "/p/transparansi" }
   ];
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export const MasterHeroBannerPage: React.FC<MasterHeroBannerPageProps> = ({ slid
   }, [displaySlides.length]);
 
   return (
-    <section className="relative w-full h-screen min-h-[680px] max-h-[900px] bg-blue-950 overflow-hidden font-sans flex flex-col justify-end select-none">
+    <section className="relative w-full h-screen min-h-[680px] max-h-[900px] bg-green-950 overflow-hidden font-sans flex flex-col justify-end select-none">
       
       {displaySlides.map((slide, index) => (
         <div 
@@ -57,40 +57,46 @@ export const MasterHeroBannerPage: React.FC<MasterHeroBannerPageProps> = ({ slid
             alt={`Hero Background ${index + 1}`} 
             className="w-full h-full object-cover object-center transform scale-105 transition-transform duration-[6000ms] ease-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-950/95 via-blue-950/70 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-blue-950/95 via-transparent to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-green-950/95 via-green-950/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-green-950 via-transparent to-black/20" />
         </div>
       ))}
 
-      <div className="relative z-20 max-w-7xl mx-auto px-6 w-full pb-12 sm:pb-16 pt-32">
-        <div className="max-w-3xl space-y-6">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-light text-white tracking-tight leading-[1.1] animate-in fade-in slide-in-from-bottom-4 duration-700 drop-shadow-md">
+      <div className="relative z-20 max-w-7xl mx-auto px-6 w-full pb-16 sm:pb-24 pt-32">
+        <div className="max-w-3xl space-y-8">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-light text-white tracking-tight leading-[1.1] animate-in fade-in slide-in-from-bottom-4 duration-700 drop-shadow-lg">
             {displaySlides[currentSlide]?.title}
           </h1>
-          <p className="text-sm sm:text-base text-blue-100 font-medium leading-relaxed max-w-2xl animate-in fade-in duration-1000 pt-2 border-l-2 border-cyan-400 pl-4">
-            {displaySlides[currentSlide]?.desc}
-          </p>
+          
+          <div className="bg-white/10 p-6 rounded-3xl backdrop-blur-md shadow-lg max-w-2xl animate-in fade-in duration-1000 delay-300">
+            <p className="text-sm sm:text-base text-white font-bold leading-relaxed relative pl-5 before:absolute before:left-0 before:top-1 before:bottom-1 before:w-1.5 before:bg-green-400 before:rounded-full">
+              {displaySlides[currentSlide]?.desc}
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className="relative z-20 bg-blue-950/80 backdrop-blur-md border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+      <div className="relative z-20 bg-green-950/80 backdrop-blur-xl shadow-[0_-15px_50px_rgba(0,0,0,0.3)]">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8">
           
-          <div className="flex flex-wrap items-center gap-6 text-xs font-bold text-white/90">
+          <div className="flex flex-wrap items-center gap-8 text-xs font-bold text-white/90">
             {displayLinks.map((link, idx) => (
-              <Link key={idx} to={link.url} className="hover:text-cyan-400 transition-colors flex items-center gap-1.5 group/ql">
-                {link.label} <ArrowRight size={14} className="text-cyan-500 group-hover/ql:translate-x-1 transition-transform" />
+              <Link key={idx} to={link.url} className="hover:text-green-300 transition-colors flex items-center gap-3 group/ql">
+                {link.label} 
+                <span className="p-1.5 rounded-full bg-white/10 group-hover/ql:bg-green-800 transition-colors shadow-inner">
+                  <ArrowRight size={14} className="text-white transform group-hover/ql:translate-x-0.5 transition-transform" />
+                </span>
               </Link>
             ))}
           </div>
 
-          <div className="flex items-center gap-2.5 self-end sm:self-auto">
+          <div className="flex items-center gap-3 self-end sm:self-auto">
             {displaySlides.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentSlide(idx)}
-                className={`h-2 transition-all duration-300 rounded-full ${
-                  idx === currentSlide ? 'w-8 bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]' : 'w-2 bg-white/30 hover:bg-white/60'
+                className={`h-3 transition-all duration-300 rounded-full ${
+                  idx === currentSlide ? 'w-12 bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)]' : 'w-3 bg-white/30 hover:bg-white/60'
                 }`}
                 aria-label={`Pindah ke slide ${idx + 1}`}
               />

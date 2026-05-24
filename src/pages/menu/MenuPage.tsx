@@ -98,33 +98,33 @@ export const MenuPage: React.FC = () => {
 
     return (
         <div className="space-y-8 font-sans animate-in fade-in duration-300 pb-10">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-white p-8 rounded-[2rem] rounded-tr-none border-2 border-blue-50 shadow-sm hover:border-cyan-100 transition-colors group">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-white p-8 rounded-[2rem] rounded-tr-none border-2 border-green-50 shadow-sm hover:border-emerald-100 transition-colors group">
                 <div>
                     <h1 className="text-2xl lg:text-3xl font-light text-slate-800 tracking-tight">Struktur Navigasi Sidebar</h1>
                     <p className="text-sm text-slate-500 font-medium mt-2">Manajemen pengarah rute internal dan hierarki sub-menu pada panel kiri.</p>
                 </div>
                 {canCreate && (
-                    <button onClick={() => openModal()} className="bg-blue-950 hover:bg-blue-900 text-white px-6 py-3.5 rounded-2xl rounded-tr-none flex items-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all font-black text-xs uppercase tracking-widest active:scale-95 group/btn">
-                        <Plus size={16} className="text-cyan-400 group-hover/btn:rotate-90 transition-transform" /> Tambah Rute Menu
+                    <button onClick={() => openModal()} className="bg-green-950 hover:bg-green-900 text-white px-6 py-3.5 rounded-2xl rounded-tr-none flex items-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all font-black text-xs uppercase tracking-widest active:scale-95 group/btn">
+                        <Plus size={16} className="text-emerald-400 group-hover/btn:rotate-90 transition-transform" /> Tambah Rute Menu
                     </button>
                 )}
             </div>
 
-            <div className="bg-white rounded-[2rem] rounded-tr-none shadow-sm border-2 border-blue-50 overflow-hidden flex flex-col hover:border-cyan-100 transition-colors">
-                <div className="p-6 lg:p-8 border-b border-blue-50 bg-slate-50/50">
+            <div className="bg-white rounded-[2rem] rounded-tr-none shadow-sm border-2 border-green-50 overflow-hidden flex flex-col hover:border-emerald-100 transition-colors">
+                <div className="p-6 lg:p-8 border-b border-green-50 bg-slate-50/50">
                     <div className="relative max-w-md group">
-                        <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-cyan-500 transition-colors" size={18} />
+                        <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors" size={18} />
                         <input
                             type="text" placeholder="Kueri pencarian menu..."
                             value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-12 pr-5 py-3.5 bg-white border border-blue-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 outline-none text-sm font-bold text-slate-800 shadow-sm transition-all"
+                            className="w-full pl-12 pr-5 py-3.5 bg-white border border-green-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none text-sm font-bold text-slate-800 shadow-sm transition-all"
                         />
                     </div>
                 </div>
 
                 <div className="overflow-x-auto flex-1">
                     <table className="w-full text-left border-collapse min-w-[800px]">
-                        <thead className="bg-slate-50 text-[10px] font-black uppercase text-slate-400 tracking-widest border-b-2 border-blue-50">
+                        <thead className="bg-slate-50 text-[10px] font-black uppercase text-slate-400 tracking-widest border-b-2 border-green-50">
                             <tr>
                                 <th className="p-6 w-24 text-center whitespace-nowrap">Urutan</th>
                                 <th className="p-6 whitespace-nowrap">Atribusi Menu & Kedalaman</th>
@@ -133,42 +133,42 @@ export const MenuPage: React.FC = () => {
                                 {(canUpdate || canDelete) && <th className="p-6 text-center whitespace-nowrap">Aksi</th>}
                             </tr>
                         </thead>
-                        <tbody className="text-sm divide-y divide-blue-50">
+                        <tbody className="text-sm divide-y divide-green-50">
                             {isLoading ? (
-                                <tr><td colSpan={(canUpdate || canDelete) ? 5 : 4} className="p-24 text-center text-slate-400 font-bold"><Loader2 className="animate-spin mx-auto mb-4 text-cyan-500" size={32} />Memuat rantai menu...</td></tr>
+                                <tr><td colSpan={(canUpdate || canDelete) ? 5 : 4} className="p-24 text-center text-slate-400 font-bold"><Loader2 className="animate-spin mx-auto mb-4 text-emerald-500" size={32} />Memuat rantai menu...</td></tr>
                             ) : processedMenus.length > 0 ? (
                                 processedMenus.map((menu: any) => (
-                                    <tr key={menu.id} className={`${menu.level > 0 ? 'bg-blue-50/30' : 'bg-white'} hover:bg-blue-50/60 transition-colors group`}>
+                                    <tr key={menu.id} className={`${menu.level > 0 ? 'bg-green-50/30' : 'bg-white'} hover:bg-green-50/60 transition-colors group`}>
                                         <td className="p-6 text-center">
-                                            <span className="bg-white text-blue-950 px-3 py-1.5 rounded-xl text-[11px] font-black shadow-sm border border-blue-100">
+                                            <span className="bg-white text-green-950 px-3 py-1.5 rounded-xl text-[11px] font-black shadow-sm border border-green-100">
                                                 {menu.order}
                                             </span>
                                         </td>
                                         <td className="p-6">
                                             <div className="flex items-center gap-3 text-slate-900" style={{ paddingLeft: `${menu.level * 24}px` }}>
                                                 {menu.level > 0 && <ChevronRight size={16} className="text-slate-300" />}
-                                                {menu.level > 0 ? <FolderTree size={18} className="text-cyan-500" /> : <Layout size={18} className="text-blue-950" />}
-                                                <span className={menu.level === 0 ? 'font-black text-sm group-hover:text-blue-950' : 'font-bold text-slate-700 group-hover:text-cyan-600'}>
+                                                {menu.level > 0 ? <FolderTree size={18} className="text-emerald-500" /> : <Layout size={18} className="text-green-950" />}
+                                                <span className={menu.level === 0 ? 'font-black text-sm group-hover:text-green-950' : 'font-bold text-slate-700 group-hover:text-emerald-600'}>
                                                     {menu.title}
                                                 </span>
                                             </div>
                                         </td>
                                         <td className="p-6">
-                                            <code className="text-[11px] bg-slate-50 text-cyan-600 px-3 py-1.5 rounded-lg font-mono font-bold border border-slate-100">
+                                            <code className="text-[11px] bg-slate-50 text-emerald-600 px-3 py-1.5 rounded-lg font-mono font-bold border border-slate-100">
                                                 {menu.path || '(Wadah Induk)'}
                                             </code>
                                         </td>
                                         <td className="p-6 text-center">
                                             {menu.level === 0 ? (
-                                                <span className="text-[9px] font-black text-white bg-blue-950 px-3 py-1.5 rounded-xl shadow-sm tracking-widest uppercase">INDUK</span>
+                                                <span className="text-[9px] font-black text-white bg-green-950 px-3 py-1.5 rounded-xl shadow-sm tracking-widest uppercase">INDUK</span>
                                             ) : (
-                                                <span className="text-[9px] font-black text-cyan-700 bg-cyan-50 border border-cyan-100 px-3 py-1.5 rounded-xl tracking-widest uppercase">SUBMENU</span>
+                                                <span className="text-[9px] font-black text-emerald-700 bg-emerald-50 border border-emerald-100 px-3 py-1.5 rounded-xl tracking-widest uppercase">SUBMENU</span>
                                             )}
                                         </td>
                                         {(canUpdate || canDelete) && (
                                             <td className="p-6">
                                                 <div className="flex justify-center gap-2">
-                                                    {canUpdate && <button onClick={() => openModal(menu)} className="p-2.5 text-blue-900 hover:text-white hover:bg-blue-950 rounded-xl transition-all shadow-sm hover:shadow-md" title="Koreksi"><Edit size={16} /></button>}
+                                                    {canUpdate && <button onClick={() => openModal(menu)} className="p-2.5 text-green-900 hover:text-white hover:bg-green-950 rounded-xl transition-all shadow-sm hover:shadow-md" title="Koreksi"><Edit size={16} /></button>}
                                                     {canDelete && <button onClick={() => confirmDelete(menu.id)} className="p-2.5 text-red-500 hover:text-white hover:bg-red-500 rounded-xl transition-all shadow-sm hover:shadow-md" title="Hapus"><Trash2 size={16} /></button>}
                                                 </div>
                                             </td>
@@ -176,7 +176,7 @@ export const MenuPage: React.FC = () => {
                                     </tr>
                                 ))
                             ) : (
-                                <tr><td colSpan={(canUpdate || canDelete) ? 5 : 4} className="p-24 text-center text-slate-400 font-bold bg-slate-50 border-2 border-dashed border-blue-100 rounded-[2rem]">Struktur navigasi kosong.</td></tr>
+                                <tr><td colSpan={(canUpdate || canDelete) ? 5 : 4} className="p-24 text-center text-slate-400 font-bold bg-slate-50 border-2 border-dashed border-green-100 rounded-[2rem]">Struktur navigasi kosong.</td></tr>
                             )}
                         </tbody>
                     </table>
@@ -185,14 +185,14 @@ export const MenuPage: React.FC = () => {
 
             {/* MODAL FORM */}
             {isModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-950/80 backdrop-blur-sm p-4 overflow-y-auto">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-green-950/80 backdrop-blur-sm p-4 overflow-y-auto">
                     <div className="bg-white rounded-[2rem] rounded-tr-none w-full max-w-xl shadow-2xl flex flex-col border-4 border-white/20 animate-in zoom-in-95 duration-200">
-                        <div className="px-8 py-6 border-b-2 border-blue-50 flex justify-between items-center bg-white">
+                        <div className="px-8 py-6 border-b-2 border-green-50 flex justify-between items-center bg-white">
                             <div className="flex items-center gap-4">
-                                <div className="p-3 bg-blue-50 text-blue-950 rounded-2xl rounded-tr-none border border-blue-100 shadow-sm"><Layout size={24} className="text-cyan-600" /></div>
+                                <div className="p-3 bg-green-50 text-green-950 rounded-2xl rounded-tr-none border border-green-100 shadow-sm"><Layout size={24} className="text-emerald-600" /></div>
                                 <div>
                                     <h2 className="text-xl font-light text-slate-800 leading-tight">{currentMenu ? 'Koreksi Rute Menu' : 'Registrasi Menu Internal'}</h2>
-                                    <p className="text-[10px] font-black text-cyan-600 uppercase tracking-widest mt-1">Struktur Navigasi</p>
+                                    <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest mt-1">Struktur Navigasi</p>
                                 </div>
                             </div>
                             <button onClick={() => setIsModalOpen(false)} className="w-10 h-10 flex items-center justify-center bg-slate-50 text-slate-500 rounded-xl hover:bg-red-50 hover:text-red-500 font-black transition-colors shadow-sm"><X size={18} /></button>
@@ -203,22 +203,22 @@ export const MenuPage: React.FC = () => {
                                 <div className="grid grid-cols-2 gap-6">
                                     <div className="col-span-2">
                                         <label className="block text-[11px] font-black text-slate-500 mb-2 uppercase tracking-widest">Label Teks Menu *</label>
-                                        <input required value={formData.title} onChange={e => setFormData({ ...formData, title: e.target.value })} className="w-full p-3.5 bg-white border border-blue-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 outline-none text-sm font-bold text-slate-800 shadow-sm transition-all" placeholder="Contoh: Klaster Dokumen" />
+                                        <input required value={formData.title} onChange={e => setFormData({ ...formData, title: e.target.value })} className="w-full p-3.5 bg-white border border-green-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none text-sm font-bold text-slate-800 shadow-sm transition-all" placeholder="Contoh: Klaster Dokumen" />
                                     </div>
 
                                     <div>
                                         <label className="block text-[11px] font-black text-slate-500 mb-2 uppercase tracking-widest">Jalur Internal (Path)</label>
-                                        <input value={formData.path} onChange={e => setFormData({ ...formData, path: e.target.value })} className="w-full p-3.5 bg-white border border-blue-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 outline-none text-sm font-mono text-slate-800 shadow-sm transition-all placeholder:font-sans" placeholder="/dashboard/dokumen" />
+                                        <input value={formData.path} onChange={e => setFormData({ ...formData, path: e.target.value })} className="w-full p-3.5 bg-white border border-green-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none text-sm font-mono text-slate-800 shadow-sm transition-all placeholder:font-sans" placeholder="/dashboard/dokumen" />
                                     </div>
 
                                     <div>
                                         <label className="block text-[11px] font-black text-slate-500 mb-2 uppercase tracking-widest">Ikon Modul (Lucide)</label>
-                                        <input value={formData.icon} onChange={e => setFormData({ ...formData, icon: e.target.value })} className="w-full p-3.5 bg-white border border-blue-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 outline-none text-sm font-bold text-slate-800 shadow-sm transition-all" placeholder="FileText, Folder, dll" />
+                                        <input value={formData.icon} onChange={e => setFormData({ ...formData, icon: e.target.value })} className="w-full p-3.5 bg-white border border-green-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none text-sm font-bold text-slate-800 shadow-sm transition-all" placeholder="FileText, Folder, dll" />
                                     </div>
 
                                     <div>
                                         <label className="block text-[11px] font-black text-slate-500 mb-2 uppercase tracking-widest">Nomor Pengurut</label>
-                                        <input type="number" value={formData.order} onChange={e => setFormData({ ...formData, order: parseInt(e.target.value) })} className="w-full p-3.5 bg-white border border-blue-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 outline-none text-sm font-black text-cyan-600 shadow-sm transition-all" />
+                                        <input type="number" value={formData.order} onChange={e => setFormData({ ...formData, order: parseInt(e.target.value) })} className="w-full p-3.5 bg-white border border-green-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none text-sm font-black text-emerald-600 shadow-sm transition-all" />
                                     </div>
 
                                     <div>
@@ -226,7 +226,7 @@ export const MenuPage: React.FC = () => {
                                         <select
                                             value={formData.parentId || ''}
                                             onChange={e => setFormData({ ...formData, parentId: e.target.value || null })}
-                                            className="w-full p-3.5 bg-white border border-blue-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 outline-none text-sm font-bold text-slate-800 shadow-sm cursor-pointer transition-all"
+                                            className="w-full p-3.5 bg-white border border-green-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none text-sm font-bold text-slate-800 shadow-sm cursor-pointer transition-all"
                                         >
                                             <option value="">-- Menu Utama Mandiri --</option>
                                             {menus.filter(m => !m.parentId && m.id !== currentMenu?.id).map(m => (
@@ -238,9 +238,9 @@ export const MenuPage: React.FC = () => {
                             </form>
                         </div>
 
-                        <div className="px-8 py-5 border-t-2 border-blue-50 bg-white flex justify-end gap-4 rounded-b-[2rem]">
+                        <div className="px-8 py-5 border-t-2 border-green-50 bg-white flex justify-end gap-4 rounded-b-[2rem]">
                             <button type="button" onClick={() => setIsModalOpen(false)} className="px-6 py-3 bg-slate-50 border border-slate-200 text-slate-700 font-black text-xs rounded-xl hover:bg-slate-100 transition-colors uppercase tracking-wider">Batalkan</button>
-                            <button form="menuForm" type="submit" className="px-8 py-3 bg-blue-950 hover:bg-blue-900 text-white font-black text-xs rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all uppercase tracking-widest">
+                            <button form="menuForm" type="submit" className="px-8 py-3 bg-green-950 hover:bg-green-900 text-white font-black text-xs rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all uppercase tracking-widest">
                                 {currentMenu ? 'Terapkan Perubahan' : 'Simpan Rute'}
                             </button>
                         </div>
@@ -250,7 +250,7 @@ export const MenuPage: React.FC = () => {
 
             {/* MODAL HAPUS */}
             {isDeleteModalOpen && (
-                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-blue-950/80 backdrop-blur-sm p-4">
+                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-green-950/80 backdrop-blur-sm p-4">
                     <div className="bg-white rounded-[2rem] rounded-tr-none w-full max-w-sm shadow-2xl text-center p-8 border-4 border-white/20 animate-in zoom-in-95 duration-200">
                         <div className="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-red-100">
                             <AlertTriangle className="text-red-500" size={36} />
@@ -267,14 +267,14 @@ export const MenuPage: React.FC = () => {
 
             {/* MODAL SUKSES */}
             {isSuccessModalOpen && (
-                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-blue-950/80 backdrop-blur-sm p-4">
+                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-green-950/80 backdrop-blur-sm p-4">
                     <div className="bg-white rounded-[2rem] rounded-tr-none w-full max-w-sm shadow-2xl text-center p-8 border-4 border-white/20 animate-in zoom-in-95 duration-200">
-                        <div className="w-20 h-20 bg-cyan-50 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-cyan-100">
-                            <CheckCircle className="text-cyan-500" size={40} />
+                        <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-emerald-100">
+                            <CheckCircle className="text-emerald-500" size={40} />
                         </div>
                         <h2 className="text-xl font-black text-slate-900 tracking-tight">Berhasil!</h2>
                         <p className="text-sm text-slate-500 mt-2 font-medium leading-relaxed">{successMessage}</p>
-                        <button onClick={() => setIsSuccessModalOpen(false)} className="mt-8 w-full py-3.5 bg-blue-950 hover:bg-blue-900 text-white font-black text-xs rounded-xl shadow-lg hover:shadow-xl transition-all uppercase tracking-widest active:scale-95">Tutup Panel</button>
+                        <button onClick={() => setIsSuccessModalOpen(false)} className="mt-8 w-full py-3.5 bg-green-950 hover:bg-green-900 text-white font-black text-xs rounded-xl shadow-lg hover:shadow-xl transition-all uppercase tracking-widest active:scale-95">Tutup Panel</button>
                     </div>
                 </div>
             )}

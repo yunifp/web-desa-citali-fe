@@ -163,7 +163,7 @@ function App() {
 
         {/* --- STRUKTUR RUTE AUTENTIKASI --- */}
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/p/register" element={<RegisterPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
         {/* --- STRUKTUR RUTE DASBOR ADMIN --- */}

@@ -11,87 +11,86 @@ interface WorkflowItem {
 }
 
 interface MasterRefiningWorkflowsProps {
-  sectionBadge: string;
-  sectionTitle: string;
-  sectionDesc: string;
-  workflows: WorkflowItem[];
+  sectionBadge?: string;
+  sectionTitle?: string;
+  sectionDesc?: string;
+  workflows?: WorkflowItem[];
 }
 
 export const MasterRefiningWorkflows: React.FC<MasterRefiningWorkflowsProps> = ({
-  sectionBadge,
-  sectionTitle,
-  sectionDesc,
-  workflows
+  sectionBadge = "Prosedur Layanan",
+  sectionTitle = "Alur Pelayanan Administrasi",
+  sectionDesc = "Panduan ringkas bagi warga untuk mengurus dokumen administrasi di balai desa secara efisien dan transparan.",
+  workflows = []
 }) => {
   const [activeStep, setActiveStep] = useState(0);
 
   if (!workflows || workflows.length === 0) return null;
 
   return (
-    <section className="py-24 bg-blue-950 text-white font-sans select-none overflow-hidden relative">
+    <section className="py-24 bg-white text-green-950 font-sans select-none overflow-hidden relative">
       
-      {/* Pendar Ornamen Latar */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Background Ornaments */}
+      <div className="absolute top-0 right-[-10%] w-[600px] h-[600px] bg-green-50/50 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-green-100/30 rounded-full blur-[80px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-16">
         
-        {/* Tajuk Seksi Cara Kerja */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
-          <div className="space-y-4 max-w-2xl">
-            <span className="text-[11px] font-black text-cyan-400 uppercase tracking-widest block flex items-center gap-2 relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-blue-800 after:rounded-full">
-              <Settings2 size={16} className="text-cyan-500" /> {sectionBadge}
+        {/* Tajuk Seksi */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-4">
+          <div className="space-y-6 max-w-2xl">
+            <span className="text-[11px] font-black bg-green-50 text-green-800 px-5 py-2 rounded-full uppercase tracking-widest inline-flex items-center gap-2 shadow-sm">
+              <Settings2 size={16} className="text-green-600" /> {sectionBadge}
             </span>
-            <h2 className="text-3xl lg:text-4xl font-light tracking-tight leading-snug text-white mt-6">
+            <h2 className="text-3xl lg:text-5xl font-light tracking-tight leading-snug text-green-950">
               {sectionTitle}
             </h2>
           </div>
-          <p className="text-sm text-blue-200 font-medium max-w-md leading-relaxed border-l-2 border-blue-800 pl-4">
+          <p className="text-sm text-green-900/70 font-bold max-w-md leading-relaxed relative pl-5 before:absolute before:left-0 before:top-1 before:bottom-1 before:w-1.5 before:bg-green-400 before:rounded-full">
             {sectionDesc}
           </p>
         </div>
 
-        {/* Tata Letak Akordeon Kiri & Dasbor Reaktor Kanan */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+        {/* Tata Letak Akordeon Kiri & Dasbor Kanan */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
           
-          {/* Kolom Kiri: Daftar Akordeon Navigasi */}
-          <div className="lg:col-span-6 flex flex-col justify-between space-y-4">
+          {/* Kolom Kiri: Daftar Akordeon */}
+          <div className="lg:col-span-6 flex flex-col justify-between space-y-5">
             {workflows.map((item, idx) => {
               const isActive = activeStep === idx;
               return (
                 <button
                   key={idx}
                   onClick={() => setActiveStep(idx)}
-                  className={`w-full text-left p-6 rounded-[2rem] rounded-tr-none border transition-all duration-300 flex flex-col justify-between relative overflow-hidden group ${
+                  className={`w-full text-left p-6 rounded-[32px] transition-all duration-500 flex flex-col justify-between relative overflow-hidden group ${
                     isActive 
-                      ? 'bg-white/10 border-cyan-500/50 shadow-lg' 
-                      : 'bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/20'
+                      ? 'bg-green-50 shadow-[0_15px_30px_-10px_rgba(20,83,45,0.15)]' 
+                      : 'bg-white shadow-sm hover:bg-green-50/50 hover:shadow-md hover:-translate-y-1'
                   }`}
                 >
                   <div className="flex items-center justify-between w-full">
-                    <div className="flex items-center gap-4">
-                      <span className={`text-xs font-black px-3 py-1.5 rounded-xl rounded-tr-none border shadow-sm transition-colors ${
-                        isActive ? 'bg-cyan-500 text-blue-950 border-cyan-400' : 'bg-blue-900/50 text-cyan-600 border-blue-800'
+                    <div className="flex items-center gap-5">
+                      <span className={`text-sm font-black w-10 h-10 flex items-center justify-center rounded-2xl transition-all shadow-sm ${
+                        isActive ? 'bg-green-950 text-white' : 'bg-white text-green-800 group-hover:bg-green-100'
                       }`}>
                         0{idx + 1}
                       </span>
-                      <span className={`text-sm sm:text-base font-black tracking-tight ${isActive ? 'text-white' : 'text-slate-300 group-hover:text-cyan-100 transition-colors'}`}>
+                      <span className={`text-base sm:text-lg font-black tracking-tight ${isActive ? 'text-green-950' : 'text-green-900/60 group-hover:text-green-900 transition-colors'}`}>
                         {item.title}
                       </span>
                     </div>
 
-                    <ArrowRight size={18} className={`transform transition-transform duration-500 ${
-                      isActive ? 'text-cyan-400 translate-x-1' : 'text-blue-700 group-hover:text-cyan-600'
-                    }`} />
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500 shadow-sm ${isActive ? 'bg-white text-green-700 translate-x-1' : 'bg-green-50 text-green-400 group-hover:bg-white group-hover:text-green-600'}`}>
+                      <ArrowRight size={14} />
+                    </div>
                   </div>
 
-                  {/* Teks Penjelasan Singkat Muncul Saat Aktif */}
                   {isActive && (
-                    <div className="pt-5 mt-4 border-t border-white/10 space-y-2 animate-in fade-in slide-in-from-top-2 duration-300">
-                      <span className="text-[10px] font-black text-cyan-400 block uppercase tracking-widest">
+                    <div className="pt-6 mt-4 relative before:absolute before:top-0 before:left-0 before:w-full before:h-px before:bg-green-900/10 space-y-3 animate-in fade-in slide-in-from-top-2 duration-300">
+                      <span className="text-[10px] font-black text-green-700 block uppercase tracking-widest">
                         {item.subtitle}
                       </span>
-                      <p className="text-sm text-blue-100 leading-relaxed font-medium">
+                      <p className="text-sm text-green-950/80 leading-relaxed font-bold">
                         {item.desc}
                       </p>
                     </div>
@@ -101,56 +100,58 @@ export const MasterRefiningWorkflows: React.FC<MasterRefiningWorkflowsProps> = (
             })}
           </div>
 
-          {/* Kolom Kanan: Panel Indikator Reaktor */}
-          <div className="lg:col-span-6 bg-slate-900 rounded-[2rem] rounded-tr-none border-2 border-blue-800/50 p-8 flex flex-col justify-between relative overflow-hidden shadow-2xl">
-            <div className="absolute inset-0 z-0 opacity-40 mix-blend-luminosity">
+          {/* Kolom Kanan: Panel Visual */}
+          <div className="lg:col-span-6 bg-green-950 rounded-[40px] p-10 flex flex-col justify-between relative overflow-hidden shadow-[0_20px_50px_-15px_rgba(20,83,45,0.4)]">
+            <div className="absolute inset-0 z-0 opacity-50 mix-blend-overlay">
               <img 
                 src={workflows[activeStep]?.imgUrl} 
                 alt={workflows[activeStep]?.title} 
-                className="w-full h-full object-cover transition-all duration-700 scale-105"
+                className="w-full h-full object-cover transition-transform duration-1000 scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/80 to-transparent mix-blend-multiply" />
+              <div className="absolute inset-0 bg-gradient-to-t from-green-950 via-green-950/80 to-transparent" />
             </div>
 
-            <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-5">
-              <div className="flex items-center gap-2.5">
-                <FlaskConical size={18} className="text-cyan-400" />
-                <span className="text-xs font-black text-slate-300 uppercase tracking-widest">
-                  Sistem Monitoring Reaktor
+            <div className="relative z-10 flex items-center justify-between pb-6 relative before:absolute before:bottom-0 before:left-0 before:w-full before:h-px before:bg-white/10">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center shadow-inner">
+                  <FlaskConical size={18} className="text-green-300" />
+                </div>
+                <span className="text-[10px] font-black text-white uppercase tracking-widest">
+                  Visualisasi Tahapan
                 </span>
               </div>
-              <span className="inline-flex items-center gap-1.5 bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest shadow-sm">
-                <CheckCircle2 size={12} /> Optimal
+              <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest shadow-inner">
+                <CheckCircle2 size={14} className="text-green-400" /> Valid
               </span>
             </div>
 
-            <div className="relative z-10 my-8 space-y-4 border-l-2 border-cyan-500 pl-5">
-              <span className="text-[11px] font-mono font-black text-cyan-400 block uppercase tracking-widest">
-                TAHAPAN_0{activeStep + 1} // {workflows[activeStep]?.subtitle}
+            <div className="relative z-10 my-10 space-y-5 relative pl-6 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1.5 before:bg-green-400 before:rounded-full">
+              <span className="text-[10px] font-mono font-black text-green-300 bg-white/10 px-3 py-1 rounded-full inline-block uppercase tracking-widest shadow-inner">
+                TAHAP_0{activeStep + 1}
               </span>
-              <h3 className="text-2xl sm:text-3xl font-light text-white tracking-tight leading-snug">
+              <h3 className="text-3xl sm:text-4xl font-light text-white tracking-tight leading-snug drop-shadow-md">
                 {workflows[activeStep]?.title}
               </h3>
-              <p className="text-sm text-blue-100 leading-relaxed font-medium">
+              <p className="text-sm text-green-100/90 leading-relaxed font-bold">
                 {workflows[activeStep]?.desc}
               </p>
             </div>
 
-            <div className="relative z-10 pt-5 border-t border-white/10 grid grid-cols-2 gap-6 bg-white/5 p-6 rounded-2xl rounded-tr-none border border-white/10 backdrop-blur-md">
-              <div className="space-y-1.5">
-                <span className="text-[10px] font-black text-blue-300 block uppercase tracking-widest flex items-center gap-1.5">
-                  <Gauge size={12} className="text-cyan-500" /> Parameter Kritis
+            <div className="relative z-10 pt-6 relative before:absolute before:top-0 before:left-0 before:w-full before:h-px before:bg-white/10 grid grid-cols-2 gap-8 bg-white/5 p-8 rounded-[32px] backdrop-blur-xl shadow-inner">
+              <div className="space-y-2">
+                <span className="text-[10px] font-black text-green-300 block uppercase tracking-widest flex items-center gap-2">
+                  <Gauge size={14} className="text-white" /> Estimasi Waktu
                 </span>
-                <span className="text-sm font-black text-white block truncate">
+                <span className="text-base font-black text-white block truncate">
                   {workflows[activeStep]?.metric}
                 </span>
               </div>
 
-              <div className="space-y-1.5 border-l border-white/10 pl-6">
-                <span className="text-[10px] font-black text-blue-300 block uppercase tracking-widest">
-                  Efisiensi Proses
+              <div className="space-y-2 relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-white/10">
+                <span className="text-[10px] font-black text-green-300 block uppercase tracking-widest">
+                  Biaya Layanan
                 </span>
-                <span className="text-sm font-black text-cyan-400 block truncate">
+                <span className="text-base font-black text-green-400 block truncate drop-shadow-sm">
                   {workflows[activeStep]?.efficiency}
                 </span>
               </div>

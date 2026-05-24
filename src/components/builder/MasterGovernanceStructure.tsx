@@ -9,56 +9,64 @@ export interface MasterGovernanceStructureProps {
 }
 
 export const MasterGovernanceStructure: React.FC<MasterGovernanceStructureProps> = ({
-  badge, title, desc, topBadge, topTitle, topDesc, midTitle, midDesc, botBadge, botTitle, botDesc
+  badge = "Struktur Organisasi", 
+  title = "Tata Kelola Pemerintahan Desa", 
+  desc = "Sistem pemerintahan yang terstruktur untuk memastikan pelayanan masyarakat berjalan optimal.",
+  topBadge = "Tingkat I", topTitle = "Kepala Desa", topDesc = "Pimpinan tertinggi penyelenggaraan pemerintahan desa.",
+  midTitle = "Sekretariat Desa", midDesc = "Pusat koordinasi administrasi dan pelayanan umum.",
+  botBadge = "Pelaksana Teknis", botTitle = "Kepala Urusan & Kewilayahan", botDesc = "Mengeksekusi program kerja di masing-masing dusun dan RW."
 }) => {
   return (
-    <section className="py-24 bg-white font-sans select-none overflow-hidden text-center">
-      <div className="max-w-4xl mx-auto px-6 space-y-16">
+    <section className="py-24 bg-white font-sans select-none overflow-hidden text-center relative">
+      <div className="absolute top-0 right-[-10%] w-[500px] h-[500px] bg-green-50/50 rounded-full blur-[100px] pointer-events-none" />
+      
+      <div className="max-w-4xl mx-auto px-6 space-y-16 relative z-10">
         
         <div className="space-y-6 flex flex-col items-center">
-          <span className="text-[11px] font-black text-cyan-600 uppercase tracking-widest block relative after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-12 after:h-1 after:bg-blue-900 after:rounded-full">
+          <span className="text-[11px] font-black text-green-800 uppercase tracking-widest block relative after:content-[''] after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:w-10 after:h-[3px] after:bg-green-900 after:rounded-full">
             {badge}
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-slate-700 tracking-tight mt-6">{title}</h2>
-          <p className="text-sm text-slate-500 font-medium max-w-xl mx-auto leading-relaxed">{desc}</p>
+          <h2 className="text-3xl lg:text-5xl font-light text-green-950 tracking-tight mt-6">{title}</h2>
+          <p className="text-sm text-green-900/70 font-bold max-w-xl mx-auto leading-relaxed">{desc}</p>
         </div>
 
-        <div className="flex flex-col items-center justify-center pt-6">
+        <div className="flex flex-col items-center justify-center pt-8">
           
-          {/* Top Node */}
-          <div className="p-6 bg-slate-900 text-white rounded-[2rem] rounded-tr-none border-2 border-slate-800 shadow-xl w-80 space-y-2 relative transform hover:scale-[1.02] transition-transform">
-            <span className="text-[9px] font-black text-cyan-400 uppercase tracking-widest block">{topBadge}</span>
-            <h4 className="text-sm font-black tracking-wider uppercase text-white">{topTitle}</h4>
-            <p className="text-[10px] text-slate-400 font-medium leading-relaxed">{topDesc}</p>
+          {/* Top Node (Diubah jadi bentuk Pil Bulat) */}
+          <div className="px-8 py-6 bg-green-950 text-white rounded-full shadow-[0_20px_40px_-15px_rgba(20,83,45,0.4)] w-80 space-y-2 relative transform hover:-translate-y-2 transition-transform duration-300">
+            <span className="text-[9px] font-black bg-white/10 px-3 py-1 rounded-full text-green-300 uppercase tracking-widest inline-block shadow-inner">{topBadge}</span>
+            <h4 className="text-base font-black tracking-wider uppercase text-white">{topTitle}</h4>
+            <p className="text-[10px] text-green-100/70 font-medium leading-relaxed">{topDesc}</p>
           </div>
           
           {/* Connector */}
-          <div className="h-12 w-0.5 bg-blue-200 relative my-2">
-            <ArrowDown size={16} className="absolute bottom-[-8px] left-[-8px] text-blue-400 animate-pulse" />
+          <div className="h-14 w-1.5 bg-green-100 rounded-full relative my-2">
+            <ArrowDown size={18} className="absolute bottom-[-10px] left-[-6px] text-green-400 animate-bounce" />
           </div>
           
-          {/* Middle Node */}
-          <div className="p-5 bg-white rounded-2xl border-2 border-blue-50 shadow-md w-72 space-y-1 mt-2 transform hover:border-blue-200 transition-colors">
-            <h4 className="text-sm font-black text-slate-800 uppercase">{midTitle}</h4>
-            <p className="text-[10px] text-slate-500 font-medium leading-relaxed">{midDesc}</p>
+          {/* Middle Node (Diubah jadi kotak Soft Shadow) */}
+          <div className="p-6 bg-white rounded-3xl shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08)] w-72 space-y-2 mt-2 transform hover:scale-105 transition-transform duration-300">
+            <h4 className="text-sm font-black text-green-900 uppercase">{midTitle}</h4>
+            <p className="text-[10px] text-green-800/70 font-bold leading-relaxed">{midDesc}</p>
           </div>
           
           {/* Connector */}
-          <div className="h-12 w-0.5 bg-blue-200 relative my-2">
-            <ArrowDown size={16} className="absolute bottom-[-8px] left-[-8px] text-blue-400 animate-pulse" />
+          <div className="h-14 w-1.5 bg-green-100 rounded-full relative my-2">
+            <ArrowDown size={18} className="absolute bottom-[-10px] left-[-6px] text-green-400 animate-bounce" />
           </div>
           
-          {/* Bottom Node */}
-          <div className="p-8 bg-blue-950 text-white rounded-[2.5rem] rounded-tr-none border-t-4 border-cyan-500 shadow-2xl w-96 space-y-4 mt-2 transform hover:scale-[1.02] transition-transform relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
+          {/* Bottom Node (Card Lebar Glassmorphism) */}
+          <div className="p-10 bg-green-50 text-green-950 rounded-[40px] shadow-[0_15px_40px_-15px_rgba(20,83,45,0.15)] w-full max-w-md space-y-5 mt-2 transform hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden">
+            <div className="absolute bottom-0 right-0 w-40 h-40 bg-white rounded-full blur-3xl pointer-events-none" />
             
-            <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-cyan-400 mx-auto backdrop-blur-sm border border-white/5">
-              <Network size={20} />
+            <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-green-600 mx-auto shadow-sm">
+              <Network size={24} />
             </div>
-            <div className="space-y-1 relative z-10">
-              <span className="text-[10px] font-black text-cyan-400 uppercase tracking-widest block">{botBadge}</span>
-              <h4 className="text-base font-black tracking-tight uppercase mt-1 text-white">{botTitle}</h4>
-              <p className="text-xs text-blue-100 font-medium leading-relaxed mt-2 border-t border-white/10 pt-3">{botDesc}</p>
+            <div className="space-y-2 relative z-10">
+              <span className="text-[10px] font-black text-green-700 uppercase tracking-widest block">{botBadge}</span>
+              <h4 className="text-lg font-black tracking-tight uppercase mt-1 text-green-950">{botTitle}</h4>
+              <div className="h-px w-1/2 bg-green-900/10 mx-auto my-4" />
+              <p className="text-xs text-green-900/70 font-bold leading-relaxed">{botDesc}</p>
             </div>
           </div>
 

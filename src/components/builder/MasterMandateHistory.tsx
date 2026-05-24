@@ -11,41 +11,47 @@ export interface MasterMandateHistoryProps {
 }
 
 export const MasterMandateHistory: React.FC<MasterMandateHistoryProps> = ({
-  titleHtml = "Kami berpegang pada <strong class='font-black text-[#0B4028]'>tujuan</strong>...",
-  desc1 = "Deskripsi paragraf 1",
-  desc2 = "Deskripsi paragraf 2",
-  youtubeId = "BMyw1deZ17c",
-  watermark = "PT Perminas",
-  quote = "Kedaulatan daya anagata nusantara melalui optimasi mineral kritis."
+  titleHtml = "Mengoptimalkan <strong class='font-black text-green-900'>potensi desa</strong> demi masa depan yang lebih baik.",
+  desc1 = "Pemerintah Desa Citali terus berkomitmen untuk memberikan pelayanan terbaik bagi masyarakat. Melalui program-program inovatif dan partisipasi aktif warga, kami berupaya menciptakan lingkungan yang sejahtera dan berdaya saing.",
+  desc2 = "Sejarah dan pencapaian desa merupakan fondasi kuat untuk melangkah maju menuju desa mandiri.",
+  youtubeId = "BMyw1deZ17c", // Ganti dengan ID video Desa Citali jika ada
+  watermark = "Desa Citali",
+  quote = "Kedaulatan ekonomi dan sosial dimulai dari desa kita."
 }) => {
   return (
-    <section className="py-20 bg-white border-b border-slate-100 font-sans select-none overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 space-y-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          <div className="lg:col-span-6">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-slate-900 tracking-tight leading-[1.1]" dangerouslySetInnerHTML={{ __html: titleHtml }} />
+    <section className="py-24 bg-white font-sans select-none overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-6 space-y-16 relative z-10">
+        
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+          <div className="lg:w-1/2">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-green-950 tracking-tight leading-[1.2]" dangerouslySetInnerHTML={{ __html: titleHtml }} />
           </div>
-          <div className="lg:col-span-6 space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed font-medium pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-100">
+          <div className="lg:w-1/2 space-y-6 text-sm text-green-900/80 leading-relaxed font-bold bg-green-50/50 p-8 rounded-3xl shadow-sm">
             <p>{desc1}</p>
-            {desc2 && <p className="text-[11px] text-slate-400">{desc2}</p>}
+            {desc2 && <p className="text-xs text-green-800/60 pt-4 border-t border-green-100">{desc2}</p>}
           </div>
         </div>
+
         {youtubeId && (
-          <div className="relative w-full rounded-3xl overflow-hidden bg-black aspect-video max-h-[600px] shadow-2xl border border-slate-900 flex items-center justify-center group">
+          <div className="relative w-full rounded-[40px] overflow-hidden bg-black aspect-video max-h-[600px] shadow-[0_20px_60px_-15px_rgba(20,83,45,0.4)] flex items-center justify-center group transform transition-transform duration-500 hover:scale-[1.01]">
             <iframe 
               src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3`}
-              title="Video Profil" className="absolute inset-0 w-full h-full pointer-events-none scale-[1.02] opacity-90 transition-opacity duration-700" allow="autoplay; encrypted-media" frameBorder="0"
+              title="Video Profil" className="absolute inset-0 w-full h-full pointer-events-none scale-[1.05] opacity-80 transition-opacity duration-700 group-hover:opacity-100" allow="autoplay; encrypted-media" frameBorder="0"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 z-10" />
-            <div className="absolute top-6 right-6 z-20 flex items-center gap-2 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">
-              <Layers size={12} className="text-[#C5A059]" />
+            
+            <div className="absolute inset-0 bg-gradient-to-t from-green-950/80 via-transparent to-transparent z-10 opacity-90" />
+            
+            <div className="absolute top-8 right-8 z-20 flex items-center gap-2.5 bg-black/30 backdrop-blur-md px-4 py-2 rounded-xl shadow-lg">
+              <Layers size={14} className="text-white" />
               <span className="text-[10px] font-black text-white tracking-widest uppercase block leading-none">{watermark}</span>
             </div>
-            <div className="absolute bottom-8 inset-x-0 z-20 text-center px-6">
-              <p className="text-sm sm:text-base md:text-lg font-bold text-white tracking-wide drop-shadow-lg italic">"{quote}"</p>
+            
+            <div className="absolute bottom-10 inset-x-0 z-20 text-center px-8">
+              <p className="text-lg sm:text-xl md:text-2xl font-black text-white tracking-wide drop-shadow-[0_5px_10px_rgba(0,0,0,0.5)] italic">"{quote}"</p>
             </div>
           </div>
         )}
+
       </div>
     </section>
   );

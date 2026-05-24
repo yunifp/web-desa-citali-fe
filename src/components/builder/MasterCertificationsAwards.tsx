@@ -12,26 +12,28 @@ export const MasterCertificationsAwards: React.FC<MasterCertificationsAwardsProp
   title, description, certs = []
 }) => {
   return (
-    <section className="py-24 bg-blue-50 font-sans select-none overflow-hidden border-y border-blue-100">
-      <div className="max-w-7xl mx-auto px-6 space-y-12 text-center">
+    <section className="py-24 bg-white font-sans select-none overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-6 space-y-16 text-center relative z-10">
         
         {/* Teks Tengah */}
-        <div className="space-y-4 max-w-2xl mx-auto flex flex-col items-center">
-          <div className="w-14 h-14 rounded-full bg-blue-900 text-cyan-400 flex items-center justify-center shadow-lg shadow-blue-900/20">
-            <Award size={24} />
+        <div className="space-y-5 max-w-2xl mx-auto flex flex-col items-center">
+          <div className="w-16 h-16 rounded-3xl bg-green-950 text-white flex items-center justify-center shadow-[0_10px_30px_-10px_rgba(20,83,45,0.5)] transform -rotate-3 hover:rotate-0 transition-transform duration-300">
+            <Award size={28} />
           </div>
-          <h3 className="text-3xl font-black text-blue-950 tracking-tight">{title}</h3>
-          <p className="text-sm text-slate-600 font-medium leading-relaxed">{description}</p>
+          <h3 className="text-3xl font-black text-green-950 tracking-tight">{title}</h3>
+          <p className="text-sm text-green-900/70 font-bold leading-relaxed">{description}</p>
         </div>
 
-        {/* Grid Kartu Sertifikat */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Grid Kartu Sertifikat Tanpa Border */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {certs.map((c, idx) => (
-            <div key={idx} className="p-6 bg-white rounded-2xl shadow-sm hover:shadow-md border border-slate-100 border-l-4 border-l-cyan-500 flex flex-col text-left gap-3 transition-all transform hover:-translate-y-1">
-              <CheckCircle2 size={20} className="text-cyan-500" />
+            <div key={idx} className="p-8 bg-white rounded-[32px] shadow-[0_15px_40px_-15px_rgba(0,0,0,0.08)] flex flex-col text-left gap-4 transition-all transform hover:-translate-y-2 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12)]">
+              <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center">
+                <CheckCircle2 size={20} className="text-green-700" />
+              </div>
               <div>
-                <h4 className="text-sm font-black text-blue-950 tracking-tight">{c.title}</h4>
-                <p className="text-xs text-slate-500 font-medium mt-1 leading-relaxed">{c.desc}</p>
+                <h4 className="text-base font-black text-green-950 tracking-tight">{c.title}</h4>
+                <p className="text-xs text-green-800/80 font-bold mt-2 leading-relaxed">{c.desc}</p>
               </div>
             </div>
           ))}

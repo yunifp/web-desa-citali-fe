@@ -4,7 +4,7 @@ import { ArrowRight, Calendar } from 'lucide-react';
 import { publicApi } from '../../services/publicApi';
 
 interface MasterPostGridProps {
-  sectionTitle: string;
+  sectionTitle?: string;
   categorySlug: string;
   limit: number;
 }
@@ -53,44 +53,51 @@ export const MasterPostGrid: React.FC<MasterPostGridProps> = ({
   }, [categorySlug, limit]);
 
   return (
-    <section className="py-24 bg-slate-50 font-sans select-none w-full">
-      <div className="max-w-7xl mx-auto px-6 space-y-12">
+    <section className="py-24 bg-white font-sans select-none w-full relative">
+      <div className="max-w-7xl mx-auto px-6 space-y-12 relative z-10">
         
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[...Array(limit)].map((_, i) => <div key={i} className="animate-pulse bg-blue-100/50 h-[400px] rounded-[2rem] rounded-tr-none border border-blue-50" />)}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {[...Array(limit)].map((_, i) => <div key={i} className="animate-pulse bg-green-50/50 h-[420px] rounded-[32px] shadow-sm" />)}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {posts.map((post) => (
-              <div key={post.id} className="bg-white border-2 border-blue-50 rounded-[2rem] rounded-tr-none flex flex-col overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-cyan-100 transition-all duration-300 group cursor-pointer" onClick={() => navigate(`/read/${post.slug}`)}>
+              <div 
+                key={post.id} 
+                className="bg-white rounded-[32px] flex flex-col overflow-hidden shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_-15px_rgba(20,83,45,0.2)] hover:-translate-y-2 transition-all duration-500 group cursor-pointer" 
+                onClick={() => navigate(`/read/${post.slug}`)}
+              >
                 
-                {post.image && (
-                  <div className="w-full h-52 overflow-hidden relative">
+                {post.image ? (
+                  <div className="w-full h-56 overflow-hidden relative m-2 rounded-[24px] w-[calc(100%-16px)]">
                     <img 
                       src={sanitizeUrl(post.image)} 
                       alt={post.title} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-blue-950/10 group-hover:bg-transparent transition-colors duration-300" />
+                    <div className="absolute inset-0 bg-green-950/10 group-hover:bg-transparent transition-colors duration-500" />
                   </div>
+                ) : (
+                   <div className="w-full h-56 m-2 rounded-[24px] w-[calc(100%-16px)] flex items-center justify-center bg-green-50 text-[10px] font-bold text-green-800/40">TIDAK ADA GAMBAR</div>
                 )}
 
-                <div className="p-8 flex flex-col justify-between flex-grow bg-white">
+                <div className="p-8 pt-4 flex flex-col justify-between flex-grow bg-white">
                   <div className="space-y-4">
-                    <div className="text-[11px] font-mono font-bold text-slate-400 group-hover:text-cyan-600 transition-colors flex items-center gap-2">
+                    <div className="text-[11px] font-mono font-bold text-green-800/50 group-hover:text-green-600 transition-colors flex items-center gap-2">
                       <Calendar size={14} /> {new Date(post.publishedAt).toLocaleDateString('id-ID')}
                     </div>
-                    <h3 className="text-base font-black text-slate-800 line-clamp-2 group-hover:text-blue-950 transition-colors leading-snug">
+                    <h3 className="text-lg font-black text-green-950 line-clamp-2 group-hover:text-green-700 transition-colors leading-snug tracking-tight">
                       {post.title}
                     </h3>
                   </div>
                   
-                  <button 
-                    className="mt-8 flex items-center gap-2 text-xs font-black text-blue-900 group-hover:text-cyan-600 transition-colors"
-                  >
-                    Baca Selengkapnya <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  <div className="mt-8 pt-4 border-t border-green-50 flex items-center justify-between">
+                    <span className="text-xs font-black text-green-900 group-hover:text-green-600 transition-colors">Baca Selengkapnya</span>
+                    <div className="w-8 h-8 rounded-full bg-green-50 group-hover:bg-green-600 flex items-center justify-center text-green-800 group-hover:text-white transition-colors">
+                      <ArrowRight size={14} />
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}

@@ -14,37 +14,37 @@ export interface MasterInvestorRelationsStripeProps {
 
 export const MasterInvestorRelationsStripe: React.FC<MasterInvestorRelationsStripeProps> = ({
   title = "Keterbukaan Informasi Publik",
-  subtitle = "Sekretariat & Hubungan Investor",
+  subtitle = "Laporan & Dokumen Desa",
   documents = []
 }) => {
   return (
-    <section className="py-12 bg-white border-b-2 border-slate-50 font-sans selection:bg-blue-900 selection:text-white">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+    <section className="py-12 bg-white font-sans selection:bg-green-900 selection:text-white relative z-10 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)]">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
         
-        <div className="flex items-center gap-4 w-full md:w-auto justify-center md:justify-start">
-          <div className="w-12 h-12 rounded-[1rem] rounded-tr-none bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-950 flex-shrink-0 shadow-sm">
-            <FileText size={20} />
+        <div className="flex items-center gap-5 w-full md:w-auto justify-center md:justify-start">
+          <div className="w-14 h-14 rounded-2xl bg-green-50 flex items-center justify-center text-green-900 flex-shrink-0 shadow-inner">
+            <FileText size={24} />
           </div>
-          <div className="space-y-0.5">
-            <span className="text-[13px] font-black text-slate-800 block tracking-tight">
+          <div className="space-y-1">
+            <span className="text-sm font-black text-green-950 block tracking-tight">
               {title}
             </span>
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+            <span className="text-[10px] font-bold text-green-800/60 uppercase tracking-widest block">
               {subtitle}
             </span>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 w-full md:w-auto">
+        <div className="flex flex-wrap items-center justify-center md:justify-end gap-4 w-full md:w-auto">
           {documents.map((doc, idx) => (
             <a 
               key={idx}
               href={doc.url || '#'}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 bg-white hover:bg-blue-950 text-slate-600 hover:text-white rounded-[1rem] rounded-tr-none border-2 border-blue-50 hover:border-blue-950 text-xs font-bold transition-all flex items-center gap-2 shadow-sm hover:shadow-md group cursor-pointer hover:-translate-y-0.5"
+              className="px-6 py-3 bg-white hover:bg-green-950 text-green-800 hover:text-white rounded-full text-xs font-bold transition-all duration-300 flex items-center gap-2.5 shadow-[0_5px_15px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_25px_rgba(20,83,45,0.2)] group cursor-pointer hover:-translate-y-1"
             >
-              <Download size={14} className="text-cyan-600 group-hover:text-cyan-400 transition-colors" /> 
+              <Download size={16} className="text-green-600 group-hover:text-green-400 transition-colors" /> 
               <span>{doc.title}</span>
             </a>
           ))}

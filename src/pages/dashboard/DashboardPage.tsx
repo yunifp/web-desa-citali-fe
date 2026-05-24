@@ -9,18 +9,18 @@ export const DashboardPage: React.FC = () => {
     <div className="space-y-6 font-sans animate-in fade-in duration-300">
       
       {/* --- BANNER UTAMA EKSEKUTIF --- */}
-      <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 rounded-3xl p-8 md:p-10 text-white shadow-xl relative overflow-hidden border border-slate-800">
-        <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
+      <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-green-950 rounded-3xl p-8 md:p-10 text-white shadow-xl relative overflow-hidden border border-slate-800">
+        <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-green-500/10 via-transparent to-transparent pointer-events-none"></div>
         
         <div className="relative z-10 max-w-2xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-400 font-bold text-xs uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-500/10 border border-green-500/20 rounded-lg text-green-400 font-bold text-xs uppercase tracking-widest">
             <Layers size={14} /> Command Center
           </div>
           <h1 className="text-3xl md:text-4xl font-black tracking-tight leading-tight">
             Selamat Datang, {user?.name || 'Admin'}
           </h1>
           <p className="text-slate-400 text-xs md:text-sm font-medium leading-relaxed">
-            Portal administrasi terpusat Desa Pasir Langu, Kec. Cisarua. Gunakan panel navigasi kiri untuk merangkai tata letak halaman publik, mengelola pustaka media, serta meninjau distribusi artikel dan berita desa.
+            Portal administrasi terpusat Desa Citali, Kec. Pamulihan. Gunakan panel navigasi kiri untuk merangkai tata letak halaman publik, mengelola pustaka media, serta meninjau distribusi artikel dan berita desa.
           </p>
         </div>
       </div>
@@ -28,7 +28,7 @@ export const DashboardPage: React.FC = () => {
       {/* --- PILAR FITUR CEPAT --- */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="p-6 bg-white rounded-3xl border border-slate-200 shadow-sm space-y-3">
-          <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold">
+          <div className="w-10 h-10 bg-green-50 text-green-600 rounded-xl flex items-center justify-center font-bold">
             <LayoutGrid size={20} />
           </div>
           <h3 className="text-sm font-black text-slate-900">Modular Page Engine</h3>
@@ -44,7 +44,7 @@ export const DashboardPage: React.FC = () => {
         </div>
 
         <div className="p-6 bg-white rounded-3xl border border-slate-200 shadow-sm space-y-3">
-          <div className="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center font-bold">
+          <div className="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center font-bold">
             <ShieldCheck size={20} />
           </div>
           <h3 className="text-sm font-black text-slate-900">Keamanan Terenkripsi</h3>

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { publicApi } from '../../services/publicApi';
-import { Globe, Menu, X, ChevronDown, Megaphone, Search } from 'lucide-react';
+import { Globe, Menu, X, ChevronDown, Megaphone } from 'lucide-react';
 
 interface SubNavItem {
   label: string;
@@ -27,11 +27,10 @@ export const Navbar: React.FC = () => {
   const [activeLang, setActiveLang] = useState<'ID' | 'EN'>('ID');
   const [isBannerVisible, setIsBannerVisible] = useState(true);
 
-  // Variabel untuk Top Bar (Bar Afiliasi)
   const [topbarLinks, setTopbarLinks] = useState<{label: string, url: string}[]>([
-    { label: 'BPI Danantara', url: '#' },
-    { label: 'Danantara Asset Management', url: '#' },
-    { label: 'Danantara Investment Management', url: '#' }
+    { label: 'Portal Kab. Sumedang', url: '#' },
+    { label: 'Kemendesa PDTT', url: '#' },
+    { label: 'Layanan Pengaduan', url: '#' }
   ]);
 
   const getBackendImageUrl = (pathString: string) => {
@@ -89,36 +88,36 @@ export const Navbar: React.FC = () => {
     setOpenMobileDropdowns((prev: any) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const siteTitle = siteOptions.site_title || 'PT PERMINAS';
-  const siteTagline = siteOptions.site_tagline || 'Perusahaan Mineral Nasional';
+  const siteTitle = siteOptions.site_title || 'DESA CITALI';
+  const siteTagline = siteOptions.site_tagline || 'Kec. Pamulihan, Kab. Sumedang';
   const logoUrl = siteOptions.site_logo;
 
   const annActive = siteOptions.announcement_active === 'true';
   const annText = siteOptions.announcement_text || '';
   const annUrl = siteOptions.announcement_url || '#';
   
-  const rightTopbarLabel = siteOptions.topbar_right_label || 'Pusat Media';
-  const rightTopbarUrl = siteOptions.topbar_right_url || '/p/siaran-pers';
+  const rightTopbarLabel = siteOptions.topbar_right_label || 'Layanan Mandiri';
+  const rightTopbarUrl = siteOptions.topbar_right_url || '/p/layanan-mandiri';
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 flex flex-col font-sans select-none">
       
       {/* ===================================================================== */}
-      {/* LAPIS 1: STRIPE ATAS (BANNER PENGUMUMAN) - TEMA BIRU TUA */}
+      {/* LAPIS 1: STRIPE ATAS (BANNER PENGUMUMAN) - TEMA HIJAU TUA */}
       {/* ===================================================================== */}
       {annActive && isBannerVisible && (
-        <div className="w-full bg-blue-950 text-blue-50 border-b border-blue-900 transition-all duration-300 ease-in-out">
+        <div className="w-full bg-green-950 text-white shadow-md transition-all duration-300 ease-in-out relative z-20">
           <div className="max-w-7xl mx-auto px-6 h-10 flex items-center justify-center text-xs font-semibold tracking-wide relative">
             <div className="flex items-center gap-2.5 truncate">
-              <Megaphone size={14} className="text-cyan-400 flex-shrink-0 animate-pulse" />
+              <Megaphone size={14} className="text-green-300 flex-shrink-0 animate-pulse" />
               <span className="truncate">{annText}</span>
               {annUrl.startsWith('http') ? (
-                <a href={annUrl} target="_blank" rel="noreferrer" className="underline font-bold text-cyan-400 hover:text-white transition-colors flex-shrink-0">Selengkapnya di sini</a>
+                <a href={annUrl} target="_blank" rel="noreferrer" className="underline font-bold text-green-300 hover:text-white transition-colors flex-shrink-0">Tinjau Detail</a>
               ) : (
-                <Link to={annUrl} className="underline font-bold text-cyan-400 hover:text-white transition-colors flex-shrink-0">Selengkapnya di sini</Link>
+                <Link to={annUrl} className="underline font-bold text-green-300 hover:text-white transition-colors flex-shrink-0">Tinjau Detail</Link>
               )}
             </div>
-            <button onClick={() => setIsBannerVisible(false)} className="absolute right-6 p-1 hover:bg-white/10 rounded-full transition-colors text-blue-300 hover:text-white" title="Tutup">
+            <button onClick={() => setIsBannerVisible(false)} className="absolute right-6 p-1 hover:bg-white/20 rounded-md transition-colors text-white" title="Tutup">
               <X size={14} />
             </button>
           </div>
@@ -126,189 +125,180 @@ export const Navbar: React.FC = () => {
       )}
 
       {/* ===================================================================== */}
-      {/* LAPIS 2: BAR TAJUK (DITUKAR POSISINYA) */}
+      {/* LAPIS 2: BAR TAJUK (Tanpa Border) */}
       {/* ===================================================================== */}
       <div 
         className={`hidden md:block w-full transition-colors duration-300 ${
           isScrolled 
-            ? 'bg-blue-900 border-b border-blue-800 text-blue-200 shadow-sm' 
-            : 'bg-transparent border-b border-white/15 text-white/90'
+            ? 'bg-white/95 backdrop-blur-sm shadow-sm text-green-950' 
+            : 'bg-transparent text-white/90'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-11 flex items-center justify-between text-[11px] font-bold tracking-wider">
+        <div className="max-w-[95%] xl:max-w-7xl mx-auto px-6 h-11 flex items-center justify-between text-[11px] font-bold tracking-wider">
           
-          {/* Menu Kiri: Bahasa & Media (Tadinya di Kanan) */}
-          <div className="flex items-center gap-5">
-            <div className={`flex items-center gap-1.5 group relative cursor-pointer py-1 border-r pr-5 ${isScrolled ? 'border-blue-800' : 'border-white/20'}`}>
-              <span className="text-xs">{activeLang === 'ID' ? '🇮🇩' : '🇬🇧'}</span>
-              <span className={`font-bold transition-colors group-hover:text-cyan-400 ${isScrolled ? 'text-blue-50' : 'text-white'}`}>
-                {activeLang === 'ID' ? 'Indonesia' : 'English'}
-              </span>
-              <ChevronDown size={12} className={`transition-transform duration-200 group-hover:rotate-180 group-hover:text-cyan-400 ${isScrolled ? 'text-blue-400' : 'text-white/70'}`} />
-              
-              {/* Dropdown Bahasa Tema Gelap */}
-              <div className="absolute top-full left-0 w-32 bg-blue-950 rounded-xl shadow-xl border border-blue-800 p-1.5 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50 text-blue-100">
-                <button onClick={() => switchLanguage('id')} className={`w-full text-left px-3 py-2 rounded-lg text-[10px] font-bold flex items-center gap-1.5 transition-colors ${activeLang === 'ID' ? 'bg-blue-800 text-cyan-400' : 'hover:bg-blue-900 hover:text-white'}`}>🇮🇩 Indonesia</button>
-                <button onClick={() => switchLanguage('en')} className={`w-full text-left px-3 py-2 rounded-lg text-[10px] font-bold flex items-center gap-1.5 transition-colors ${activeLang === 'EN' ? 'bg-blue-800 text-cyan-400' : 'hover:bg-blue-900 hover:text-white'}`}>🇬🇧 English</button>
-              </div>
-            </div>
-
-            {rightTopbarUrl.startsWith('http') ? (
-              <a href={rightTopbarUrl} target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors">
-                {rightTopbarLabel}
-              </a>
-            ) : (
-              <Link to={rightTopbarUrl} className="hover:text-cyan-400 transition-colors">
-                {rightTopbarLabel}
-              </Link>
-            )}
-          </div>
-
-          {/* Menu Kanan: Afiliasi (Tadinya di Kiri) */}
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-6">
             {topbarLinks.map((item, idx) => {
               const isExternal = item.url.startsWith('http');
-              // Beri penanda batas kiri untuk item pertama
-              if (idx === 0) {
-                return isExternal ? (
-                  <a key={idx} href={item.url} target="_blank" rel="noreferrer" className={`font-black tracking-widest flex items-center gap-1.5 border-l pl-5 transition-colors ${isScrolled ? 'border-blue-800 hover:text-cyan-400 text-white' : 'border-white/20 hover:text-cyan-400 text-white'}`}>
-                    {item.label}
-                  </a>
-                ) : (
-                  <Link key={idx} to={item.url} className={`font-black tracking-widest flex items-center gap-1.5 border-l pl-5 transition-colors ${isScrolled ? 'border-blue-800 hover:text-cyan-400 text-white' : 'border-white/20 hover:text-cyan-400 text-white'}`}>
-                    {item.label}
-                  </Link>
-                );
-              }
-
+              const linkClass = `flex items-center gap-1.5 transition-colors ${isScrolled ? 'hover:text-green-600' : 'hover:text-green-300'}`;
+              
               return isExternal ? (
-                <a key={idx} href={item.url} target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors cursor-pointer">
+                <a key={idx} href={item.url} target="_blank" rel="noreferrer" className={linkClass}>
                   {item.label}
                 </a>
               ) : (
-                <Link key={idx} to={item.url} className="hover:text-cyan-400 transition-colors cursor-pointer">
+                <Link key={idx} to={item.url} className={linkClass}>
                   {item.label}
                 </Link>
               );
             })}
           </div>
+
+          <div className="flex items-center gap-6">
+            {rightTopbarUrl.startsWith('http') ? (
+              <a href={rightTopbarUrl} target="_blank" rel="noreferrer" className={`transition-colors flex items-center gap-2 ${isScrolled ? 'hover:text-green-600' : 'hover:text-green-300'}`}>
+                {rightTopbarLabel}
+              </a>
+            ) : (
+              <Link to={rightTopbarUrl} className={`transition-colors flex items-center gap-2 ${isScrolled ? 'hover:text-green-600' : 'hover:text-green-300'}`}>
+                {rightTopbarLabel}
+              </Link>
+            )}
+
+            {/* Pemisah Dot Sebagai Pengganti Border */}
+            <span className={`w-1 h-1 rounded-full ${isScrolled ? 'bg-green-200' : 'bg-white/30'}`}></span>
+
+            <div className="flex items-center gap-1.5 group relative cursor-pointer py-1">
+              <span className="text-xs">{activeLang === 'ID' ? '🇮🇩' : '🇬🇧'}</span>
+              <span className={`font-bold transition-colors ${isScrolled ? 'group-hover:text-green-600' : 'group-hover:text-green-300'}`}>
+                {activeLang === 'ID' ? 'ID' : 'EN'}
+              </span>
+              <ChevronDown size={12} className={`transition-transform duration-200 group-hover:rotate-180 ${isScrolled ? 'text-green-950 group-hover:text-green-600' : 'text-white/70 group-hover:text-green-300'}`} />
+              
+              <div className="absolute top-full right-0 w-32 bg-white rounded-2xl shadow-xl p-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50 text-green-950 mt-2">
+                <button onClick={() => switchLanguage('id')} className={`w-full text-left px-3 py-2.5 rounded-xl text-[10px] font-bold flex items-center gap-2 transition-colors ${activeLang === 'ID' ? 'bg-green-50 text-green-700' : 'hover:bg-green-50'}`}>🇮🇩 Indonesia</button>
+                <button onClick={() => switchLanguage('en')} className={`w-full text-left px-3 py-2.5 rounded-xl text-[10px] font-bold flex items-center gap-2 transition-colors ${activeLang === 'EN' ? 'bg-green-50 text-green-700' : 'hover:bg-green-50'}`}>🇬🇧 English</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* ===================================================================== */}
-      {/* LAPIS 3: BAR UTAMA (BENTUK FLOATING PILL SAAT SCROLL) */}
+      {/* LAPIS 3: BAR UTAMA */}
       {/* ===================================================================== */}
-      <div className={`w-full transition-all duration-500 ease-in-out ${isScrolled ? 'px-4 pt-3' : 'px-0 pt-0'}`}>
+      <div className={`w-full transition-all duration-500 ease-in-out ${isScrolled ? 'px-4 pt-4' : 'px-0 pt-0'}`}>
         <div 
           className={`mx-auto flex items-center justify-between transition-all duration-500 ease-in-out ${
             isScrolled 
-              ? 'max-w-6xl bg-blue-950/95 backdrop-blur-md shadow-2xl border border-blue-800 rounded-full h-16 px-6' 
-              : 'max-w-7xl h-20 px-6 border-transparent bg-transparent'
+              ? 'max-w-[95%] xl:max-w-6xl bg-white/95 backdrop-blur-md shadow-2xl rounded-2xl h-[72px] px-8' 
+              : 'max-w-[95%] xl:max-w-7xl h-24 px-6 bg-transparent'
           }`}
         >
           {/* Logo & Judul */}
-          <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
+          <Link to="/" className="flex items-center gap-4 group flex-shrink-0">
             {logoUrl ? (
-              <img src={getBackendImageUrl(logoUrl)} alt={siteTitle} className="h-10 w-auto object-contain max-w-[120px] transition-transform duration-300 group-hover:scale-105" />
+              <img src={getBackendImageUrl(logoUrl)} alt={siteTitle} className="h-12 w-auto object-contain max-w-[140px] transition-transform duration-300 group-hover:scale-105" />
             ) : (
-              <div className={`p-2.5 rounded-full transition-all duration-300 shadow-sm ${isScrolled ? 'bg-blue-600 text-white group-hover:bg-cyan-500' : 'bg-white text-blue-900 group-hover:bg-white/90'}`}>
-                <Globe size={18} />
+              <div className={`p-3 rounded-xl transition-all duration-300 shadow-sm ${isScrolled ? 'bg-green-900 text-white shadow-lg' : 'bg-white text-green-950 group-hover:shadow-lg'}`}>
+                <Globe size={20} />
               </div>
             )}
-            <div className="flex flex-col border-l border-white/20 pl-3">
-              <span className="font-black tracking-tight text-base sm:text-lg block leading-none text-white transition-colors duration-300 truncate max-w-[200px] group-hover:text-cyan-400">
+            <div className="flex flex-col pl-2">
+              <span className={`font-black tracking-tight text-lg sm:text-xl block leading-none transition-colors duration-300 truncate max-w-[220px] ${isScrolled ? 'text-green-950 group-hover:text-green-700' : 'text-white group-hover:text-green-300'}`}>
                 {siteTitle}
               </span>
-              <span className={`text-[8px] font-bold uppercase tracking-widest block mt-1 truncate max-w-[200px] transition-colors duration-300 ${isScrolled ? 'text-cyan-400' : 'text-white/70'}`}>
+              <span className={`text-[9px] font-bold uppercase tracking-widest block mt-1.5 truncate max-w-[220px] transition-colors duration-300 ${isScrolled ? 'text-green-700' : 'text-white/80'}`}>
                 {siteTagline}
               </span>
             </div>
           </Link>
 
-          {/* Menu Utama (Tengah/Kanan) */}
-          <nav className="hidden md:flex items-center justify-end flex-1 pr-6 gap-6 ml-10">
+          {/* Menu Utama */}
+          <nav className="hidden md:flex items-center justify-end flex-1 pr-8 gap-8 ml-10">
             {navTree.length > 0 ? (
               navTree.map(item => {
                 const hasSub = Array.isArray(item.subMenus) && item.subMenus.length > 0;
+                const linkStyle = `text-[11px] font-bold uppercase tracking-widest cursor-pointer flex items-center gap-1.5 transition-colors duration-200 ${isScrolled ? 'text-green-950 hover:text-green-600' : 'text-white/95 hover:text-green-300'}`;
+
                 if (hasSub) {
                   return (
-                    <div key={item.id} className="relative group py-4">
-                      <span className="text-[10px] font-bold uppercase tracking-widest cursor-pointer flex items-center gap-1 transition-colors duration-200 text-white/90 hover:text-cyan-400">
-                        {item.label} <ChevronDown size={11} className="transition-transform duration-300 group-hover:rotate-180 text-white/60 group-hover:text-cyan-400" />
+                    <div key={item.id} className="relative group py-6">
+                      <span className={linkStyle}>
+                        {item.label} <ChevronDown size={12} className={`transition-transform duration-300 group-hover:rotate-180 ${isScrolled ? 'text-green-600' : 'text-white/60'}`} />
                       </span>
 
-                      {/* Dropdown Bertema Biru Tua */}
-                      <div className="absolute top-[85%] left-1/2 -translate-x-1/2 w-56 bg-blue-950 rounded-2xl shadow-xl border border-blue-800 p-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 transform translate-y-3 group-hover:translate-y-0 z-50 text-blue-50">
+                      {/* Dropdown Bertema Primary Putih */}
+                      <div className="absolute top-[80%] left-0 w-60 bg-white rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] p-2.5 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 transform translate-y-3 group-hover:translate-y-0 z-50 text-green-950">
                         {item.subMenus.map((sub, sIdx) => {
                           const isExt = sub.url.startsWith('http');
-                          if (isExt) return <a key={sIdx} href={sub.url} target="_blank" rel="noreferrer" className="block px-4 py-3 text-[11px] font-bold hover:text-cyan-400 hover:bg-blue-900 rounded-xl transition-colors truncate">{sub.label} ↗</a>;
-                          return <Link key={sIdx} to={sub.url} className="block px-4 py-3 text-[11px] font-bold hover:text-cyan-400 hover:bg-blue-900 rounded-xl transition-colors truncate">{sub.label}</Link>;
+                          const dropLinkStyle = "block px-4 py-3.5 text-[11px] font-bold text-green-900 hover:text-green-700 hover:bg-green-50/80 rounded-xl transition-all truncate";
+                          if (isExt) return <a key={sIdx} href={sub.url} target="_blank" rel="noreferrer" className={dropLinkStyle}>{sub.label} ↗</a>;
+                          return <Link key={sIdx} to={sub.url} className={dropLinkStyle}>{sub.label}</Link>;
                         })}
                       </div>
                     </div>
                   );
                 }
                 const isExt = item.url.startsWith('http');
-                if (isExt) return <a key={item.id} href={item.url} target="_blank" rel="noreferrer" className="text-[10px] font-bold uppercase tracking-widest transition-colors duration-200 text-white/90 hover:text-cyan-400">{item.label} ↗</a>;
-                return <Link key={item.id} to={item.url} className="text-[10px] font-bold uppercase tracking-widest transition-colors duration-200 text-white/90 hover:text-cyan-400">{item.label}</Link>;
+                if (isExt) return <a key={item.id} href={item.url} target="_blank" rel="noreferrer" className={linkStyle}>{item.label} ↗</a>;
+                return <Link key={item.id} to={item.url} className={linkStyle}>{item.label}</Link>;
               })
             ) : (
-              <Link to="/" className="text-[10px] font-bold uppercase tracking-widest transition-colors text-white hover:text-cyan-400">Beranda</Link>
+              <Link to="/" className={`text-[11px] font-bold uppercase tracking-widest transition-colors ${isScrolled ? 'text-green-950 hover:text-green-600' : 'text-white hover:text-green-300'}`}>Beranda</Link>
             )}
           </nav>
 
           {/* Tombol Aksi Kanan */}
           <div className="flex items-center gap-3 flex-shrink-0">
-            <button onClick={() => alert("Membuka Modul Pencarian Global...")} className="p-2.5 rounded-full transition-colors text-white bg-white/10 hover:bg-cyan-500 hover:text-blue-950" title="Cari Dokumen">
+            {/* <button onClick={() => alert("Membuka Pencarian Terpadu Citali...")} className={`p-3 rounded-2xl transition-all shadow-sm ${isScrolled ? 'bg-green-50 text-green-900 hover:bg-green-900 hover:text-white' : 'bg-white text-green-950 hover:bg-green-50'}`} title="Cari Informasi">
               <Search size={16} strokeWidth={2.5} />
-            </button>
-            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 rounded-full md:hidden transition-colors text-white bg-white/10 hover:bg-cyan-500 hover:text-blue-950">
+            </button> */}
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className={`p-3 rounded-2xl md:hidden transition-all shadow-sm ${isScrolled ? 'bg-green-50 text-green-900 hover:bg-green-900 hover:text-white' : 'bg-white text-green-950 hover:bg-green-50'}`}>
               {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* --- LACI SELULER TEMA GELAP --- */}
+      {/* --- LACI SELULER TEMA PRIMARY PUTIH --- */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-blue-950 border-b border-blue-900 px-6 py-6 space-y-4 animate-in slide-in-from-top duration-300 max-h-[80vh] overflow-y-auto text-blue-50 shadow-2xl">
+        <div className="md:hidden bg-white px-6 py-8 space-y-6 animate-in slide-in-from-top duration-300 max-h-[85vh] overflow-y-auto text-green-950 shadow-2xl rounded-b-3xl">
           
-          <div className="flex items-center justify-between border-b border-blue-900 pb-4 sm:hidden">
-            <span className="text-xs font-bold text-blue-400 uppercase tracking-widest">Bahasa Portal</span>
+          <div className="flex items-center justify-between sm:hidden pb-2">
+            <span className="text-xs font-bold text-green-700 uppercase tracking-widest">Pilihan Bahasa</span>
             <div className="flex gap-2">
-              <button onClick={() => switchLanguage('id')} className={`px-3 py-1.5 rounded-full text-[10px] font-bold transition-colors ${activeLang === 'ID' ? 'bg-blue-600 text-white' : 'bg-blue-900 text-blue-300'}`}>🇮🇩 ID</button>
-              <button onClick={() => switchLanguage('en')} className={`px-3 py-1.5 rounded-full text-[10px] font-bold transition-colors ${activeLang === 'EN' ? 'bg-blue-600 text-white' : 'bg-blue-900 text-blue-300'}`}>🇬🇧 EN</button>
+              <button onClick={() => switchLanguage('id')} className={`px-4 py-2 rounded-xl text-[10px] font-bold transition-all shadow-sm ${activeLang === 'ID' ? 'bg-green-900 text-white' : 'bg-green-50 text-green-800'}`}>🇮🇩 ID</button>
+              <button onClick={() => switchLanguage('en')} className={`px-4 py-2 rounded-xl text-[10px] font-bold transition-all shadow-sm ${activeLang === 'EN' ? 'bg-green-900 text-white' : 'bg-green-50 text-green-800'}`}>🇬🇧 EN</button>
             </div>
           </div>
           
-          {/* Tautan Topbar di Mode Seluler */}
-          <div className="border-b border-blue-900 pb-4 space-y-3">
-             <span className="text-[9px] font-bold text-cyan-500 uppercase tracking-widest block">Afiliasi & Eksternal</span>
-             <div className="grid grid-cols-1 gap-2.5">
+          <div className="space-y-4">
+             <span className="text-[10px] font-bold text-green-700 uppercase tracking-widest block">Tautan Cepat</span>
+             <div className="grid grid-cols-1 gap-4 bg-green-50/50 p-5 rounded-2xl">
                {topbarLinks.map((item, idx) => (
-                 <a key={idx} href={item.url} className="text-xs font-semibold text-blue-100 hover:text-cyan-400 block truncate">{item.label}</a>
+                 <a key={idx} href={item.url} className="text-xs font-bold text-green-900 hover:text-green-600 block truncate">{item.label}</a>
                ))}
-               <Link to={rightTopbarUrl} className="text-xs font-semibold text-blue-100 hover:text-cyan-400 block truncate">{rightTopbarLabel}</Link>
+               <Link to={rightTopbarUrl} className="text-xs font-bold text-green-900 hover:text-green-600 block truncate">{rightTopbarLabel}</Link>
              </div>
           </div>
 
-          <div className="pt-2 space-y-1">
+          <div className="pt-2 space-y-3">
             {navTree.map(item => {
               const hasSub = Array.isArray(item.subMenus) && item.subMenus.length > 0;
               const isOpen = !!openMobileDropdowns[item.id];
               if (hasSub) {
                 return (
-                  <div key={item.id} className="space-y-2 border-b border-blue-900/50 pb-2">
-                    <button onClick={() => toggleMobileDropdown(item.id)} className="flex items-center justify-between w-full p-2 rounded-lg text-left font-black text-xs text-white uppercase tracking-wide hover:bg-blue-900 transition-colors">
+                  <div key={item.id} className="space-y-2 bg-white rounded-2xl p-1">
+                    <button onClick={() => toggleMobileDropdown(item.id)} className="flex items-center justify-between w-full p-3 rounded-xl text-left font-black text-xs text-green-950 uppercase tracking-wide hover:bg-green-50 transition-colors">
                       <span>{item.label}</span>
-                      <ChevronDown size={14} className={`transform transition-transform duration-200 ${isOpen ? 'rotate-180 text-cyan-400' : 'text-blue-400'}`} />
+                      <ChevronDown size={16} className={`transform transition-transform duration-200 ${isOpen ? 'rotate-180 text-green-700' : 'text-green-400'}`} />
                     </button>
                     {isOpen && (
-                      <div className="pl-4 space-y-3 border-l-2 border-cyan-500/30 ml-2 pt-2 pb-1 animate-in fade-in duration-200">
+                      <div className="pl-4 space-y-2 ml-2 pt-1 pb-3 animate-in fade-in duration-200 relative before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-green-100 before:rounded-full">
                         {item.subMenus.map((sub, sIdx) => {
                           const isExt = sub.url.startsWith('http');
-                          if (isExt) return <a key={sIdx} href={sub.url} target="_blank" rel="noreferrer" className="block text-xs font-semibold text-blue-200 hover:text-cyan-400 transition-colors">{sub.label} ↗</a>;
-                          return <Link key={sIdx} onClick={() => setIsMobileMenuOpen(false)} to={sub.url} className="block text-xs font-semibold text-blue-200 hover:text-cyan-400 transition-colors">{sub.label}</Link>;
+                          if (isExt) return <a key={sIdx} href={sub.url} target="_blank" rel="noreferrer" className="block text-xs font-bold text-green-800 hover:text-green-600 hover:bg-green-50 p-2.5 rounded-lg transition-colors">{sub.label} ↗</a>;
+                          return <Link key={sIdx} onClick={() => setIsMobileMenuOpen(false)} to={sub.url} className="block text-xs font-bold text-green-800 hover:text-green-600 hover:bg-green-50 p-2.5 rounded-lg transition-colors">{sub.label}</Link>;
                         })}
                       </div>
                     )}
@@ -316,8 +306,8 @@ export const Navbar: React.FC = () => {
                 );
               }
               const isExt = item.url.startsWith('http');
-              if (isExt) return <a key={item.id} href={item.url} target="_blank" rel="noreferrer" className="block p-2 rounded-lg text-xs font-black text-white uppercase tracking-wide border-b border-blue-900/50 hover:bg-blue-900 transition-colors">{item.label} ↗</a>;
-              return <Link key={item.id} onClick={() => setIsMobileMenuOpen(false)} to={item.url} className="block p-2 rounded-lg text-xs font-black text-white uppercase tracking-wide border-b border-blue-900/50 hover:bg-blue-900 transition-colors">{item.label}</Link>;
+              if (isExt) return <a key={item.id} href={item.url} target="_blank" rel="noreferrer" className="block p-3 rounded-xl text-xs font-black text-green-950 uppercase tracking-wide hover:bg-green-50 transition-colors">{item.label} ↗</a>;
+              return <Link key={item.id} onClick={() => setIsMobileMenuOpen(false)} to={item.url} className="block p-3 rounded-xl text-xs font-black text-green-950 uppercase tracking-wide hover:bg-green-50 transition-colors">{item.label}</Link>;
             })}
           </div>
         </div>

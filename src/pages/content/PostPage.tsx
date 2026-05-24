@@ -44,7 +44,7 @@ export const PostPage: React.FC = () => {
 
     const StatusBadge = ({ status }: { status: PostStatus }) => {
         switch (status) {
-            case 'PUBLISHED': return <span className="bg-cyan-50 text-cyan-700 text-[10px] font-black px-3 py-1.5 rounded-xl border border-cyan-200/80 uppercase tracking-widest shadow-sm">PUBLISHED</span>;
+            case 'PUBLISHED': return <span className="bg-emerald-50 text-emerald-700 text-[10px] font-black px-3 py-1.5 rounded-xl border border-emerald-200/80 uppercase tracking-widest shadow-sm">PUBLISHED</span>;
             case 'DRAFT': return <span className="bg-amber-50 text-amber-700 text-[10px] font-black px-3 py-1.5 rounded-xl border border-amber-200/80 uppercase tracking-widest shadow-sm">DRAFT</span>;
             case 'ARCHIVED': return <span className="bg-slate-100 text-slate-600 text-[10px] font-black px-3 py-1.5 rounded-xl border border-slate-200 uppercase tracking-widest shadow-sm">ARCHIVED</span>;
             default: return null;
@@ -76,7 +76,7 @@ export const PostPage: React.FC = () => {
     return (
         <div className="space-y-8 font-sans animate-in fade-in duration-300 pb-10">
             {/* Header Seksi */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-white p-8 rounded-[2rem] rounded-tr-none border-2 border-blue-50 shadow-sm hover:border-cyan-100 transition-colors group">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-white p-8 rounded-[2rem] rounded-tr-none border-2 border-green-50 shadow-sm hover:border-emerald-100 transition-colors group">
                 <div>
                     <h1 className="text-2xl lg:text-3xl font-light text-slate-800 tracking-tight">Manajemen Artikel</h1>
                     <p className="text-sm text-slate-500 font-medium mt-2">Pengelolaan postingan web dengan mode halaman penuh (*dedicated page*).</p>
@@ -84,36 +84,36 @@ export const PostPage: React.FC = () => {
                 {canCreate && (
                     <button 
                         onClick={() => navigate('/posts/create')} 
-                        className="bg-blue-950 hover:bg-blue-900 text-white px-6 py-3.5 rounded-2xl rounded-tr-none flex items-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all font-black text-xs uppercase tracking-widest active:scale-95 group/btn"
+                        className="bg-green-950 hover:bg-green-900 text-white px-6 py-3.5 rounded-2xl rounded-tr-none flex items-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all font-black text-xs uppercase tracking-widest active:scale-95 group/btn"
                     >
-                        <Plus size={16} className="text-cyan-400 group-hover/btn:rotate-90 transition-transform" /> Tulis Postingan Baru
+                        <Plus size={16} className="text-emerald-400 group-hover/btn:rotate-90 transition-transform" /> Tulis Postingan Baru
                     </button>
                 )}
             </div>
 
             {/* Kontainer Utama */}
-            <div className="bg-white rounded-[2rem] rounded-tr-none shadow-sm border-2 border-blue-50 overflow-hidden flex flex-col hover:border-cyan-100 transition-colors">
+            <div className="bg-white rounded-[2rem] rounded-tr-none shadow-sm border-2 border-green-50 overflow-hidden flex flex-col hover:border-emerald-100 transition-colors">
                 
                 {/* Bar Filter & Pencarian */}
-                <div className="p-6 lg:p-8 border-b border-blue-50 bg-slate-50/50 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div className="p-6 lg:p-8 border-b border-green-50 bg-slate-50/50 grid grid-cols-1 sm:grid-cols-3 gap-6">
                     <div className="relative group">
-                        <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-cyan-500 transition-colors" size={18} />
+                        <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors" size={18} />
                         <input
                             type="text" placeholder="Cari judul artikel..."
                             value={searchTerm} onChange={(e) => { setSearchTerm(e.target.value); setPage(1); }}
-                            className="w-full pl-12 pr-5 py-3.5 bg-white border border-blue-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 outline-none text-sm font-bold text-slate-800 shadow-sm transition-all"
+                            className="w-full pl-12 pr-5 py-3.5 bg-white border border-green-100 rounded-2xl rounded-tr-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none text-sm font-bold text-slate-800 shadow-sm transition-all"
                         />
                     </div>
                     <select
                         value={filterCategory} onChange={(e) => { setFilterCategory(e.target.value); setPage(1); }}
-                        className="border border-blue-100 p-3.5 rounded-2xl rounded-tr-none outline-none focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 bg-white text-sm font-bold text-slate-700 shadow-sm cursor-pointer transition-all"
+                        className="border border-green-100 p-3.5 rounded-2xl rounded-tr-none outline-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 bg-white text-sm font-bold text-slate-700 shadow-sm cursor-pointer transition-all"
                     >
                         <option value="">-- Semua Kategori --</option>
                         {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                     </select>
                     <select
                         value={filterStatus} onChange={(e) => { setFilterStatus(e.target.value); setPage(1); }}
-                        className="border border-blue-100 p-3.5 rounded-2xl rounded-tr-none outline-none focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 bg-white text-sm font-bold text-slate-700 shadow-sm cursor-pointer transition-all"
+                        className="border border-green-100 p-3.5 rounded-2xl rounded-tr-none outline-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 bg-white text-sm font-bold text-slate-700 shadow-sm cursor-pointer transition-all"
                     >
                         <option value="">-- Semua Status --</option>
                         <option value="PUBLISHED">PUBLISHED</option>
@@ -125,7 +125,7 @@ export const PostPage: React.FC = () => {
                 {/* Tabel Konten */}
                 <div className="overflow-x-auto flex-1">
                     <table className="w-full text-left border-collapse min-w-[800px]">
-                        <thead className="bg-slate-50 text-[10px] font-black uppercase text-slate-400 tracking-widest border-b-2 border-blue-50">
+                        <thead className="bg-slate-50 text-[10px] font-black uppercase text-slate-400 tracking-widest border-b-2 border-green-50">
                             <tr>
                                 <th className="p-6 whitespace-nowrap">Informasi Artikel</th>
                                 <th className="p-6 whitespace-nowrap">Kategori & Layout Bawaan</th>
@@ -134,31 +134,31 @@ export const PostPage: React.FC = () => {
                                 {(canUpdate || canDelete) && <th className="p-6 text-center whitespace-nowrap">Aksi</th>}
                             </tr>
                         </thead>
-                        <tbody className="text-sm divide-y divide-blue-50">
+                        <tbody className="text-sm divide-y divide-green-50">
                             {isLoading ? (
-                                <tr><td colSpan={5} className="p-24 text-center text-slate-400 font-bold"><Loader2 className="animate-spin mx-auto mb-4 text-cyan-500" size={32} />Memuat data...</td></tr>
+                                <tr><td colSpan={5} className="p-24 text-center text-slate-400 font-bold"><Loader2 className="animate-spin mx-auto mb-4 text-emerald-500" size={32} />Memuat data...</td></tr>
                             ) : posts.length > 0 ? (
                                 posts.map(item => (
-                                    <tr key={item.id} className="hover:bg-blue-50/50 transition-colors group">
+                                    <tr key={item.id} className="hover:bg-green-50/50 transition-colors group">
                                         <td className="p-6 max-w-xs">
                                             <div className="flex items-start gap-4">
-                                                <div className="w-12 h-12 rounded-2xl rounded-tr-none bg-cyan-50 flex items-center justify-center flex-shrink-0 border border-cyan-100 shadow-sm group-hover:scale-105 transition-transform">
-                                                    <FileText size={20} className="text-cyan-600" />
+                                                <div className="w-12 h-12 rounded-2xl rounded-tr-none bg-emerald-50 flex items-center justify-center flex-shrink-0 border border-emerald-100 shadow-sm group-hover:scale-105 transition-transform">
+                                                    <FileText size={20} className="text-emerald-600" />
                                                 </div>
                                                 <div className="truncate py-1">
-                                                    <div className="font-black text-slate-800 text-sm truncate group-hover:text-blue-950 transition-colors" title={item.title}>{item.title}</div>
+                                                    <div className="font-black text-slate-800 text-sm truncate group-hover:text-green-950 transition-colors" title={item.title}>{item.title}</div>
                                                     {item.titleEn && <div className="text-[11px] text-slate-500 truncate mt-1 italic">EN: {item.titleEn}</div>}
-                                                    <div className="text-[10px] text-cyan-600 font-mono mt-2 px-2 py-1 bg-cyan-50 rounded-lg w-fit border border-cyan-100">{item.slug}</div>
+                                                    <div className="text-[10px] text-emerald-600 font-mono mt-2 px-2 py-1 bg-emerald-50 rounded-lg w-fit border border-emerald-100">{item.slug}</div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td className="p-6 whitespace-nowrap">
                                             <div className="flex items-center gap-2 font-bold text-slate-800 text-xs">
-                                                <Folder size={14} className="text-cyan-500" /> {item.category?.name}
+                                                <Folder size={14} className="text-emerald-500" /> {item.category?.name}
                                             </div>
                                             {item.category?.template && (
                                                 <div className="flex items-center gap-1.5 text-[10px] bg-slate-50 text-slate-500 px-2 py-1 rounded-md w-fit mt-2 border border-slate-200 font-semibold shadow-sm">
-                                                    <Layers size={12} className="text-cyan-600" /> Auto-Layout: {item.category.template.name}
+                                                    <Layers size={12} className="text-emerald-600" /> Auto-Layout: {item.category.template.name}
                                                 </div>
                                             )}
                                         </td>
@@ -177,7 +177,7 @@ export const PostPage: React.FC = () => {
                                                     {canUpdate && (
                                                         <button 
                                                             onClick={() => navigate(`/posts/edit/${item.id}`)} 
-                                                            className="p-2.5 text-blue-900 hover:text-white hover:bg-blue-950 rounded-xl transition-all shadow-sm hover:shadow-md" title="Edit Halaman"
+                                                            className="p-2.5 text-green-900 hover:text-white hover:bg-green-950 rounded-xl transition-all shadow-sm hover:shadow-md" title="Edit Halaman"
                                                         >
                                                             <Edit size={16} />
                                                         </button>
@@ -195,17 +195,17 @@ export const PostPage: React.FC = () => {
                                         )}
                                     </tr>
                                 ))
-                            ) : (<tr><td colSpan={5} className="p-24 text-center text-slate-400 font-bold bg-slate-50 border-2 border-dashed border-blue-100 rounded-[2rem]">Artikel belum tersedia.</td></tr>)}
+                            ) : (<tr><td colSpan={5} className="p-24 text-center text-slate-400 font-bold bg-slate-50 border-2 border-dashed border-green-100 rounded-[2rem]">Artikel belum tersedia.</td></tr>)}
                         </tbody>
                     </table>
                 </div>
 
                 {/* Footer Paginasi */}
-                <div className="flex items-center justify-between px-6 lg:px-8 py-5 bg-white border-t-2 border-blue-50 rounded-b-[2rem] rounded-bl-none">
-                    <span className="text-[10px] text-slate-500 font-black uppercase tracking-widest border-l-2 border-cyan-400 pl-3">Total {meta.totalItems} Artikel</span>
-                    <div className="flex items-center gap-2 bg-slate-50 border border-blue-100 rounded-2xl rounded-tr-none p-1.5 shadow-sm">
+                <div className="flex items-center justify-between px-6 lg:px-8 py-5 bg-white border-t-2 border-green-50 rounded-b-[2rem] rounded-bl-none">
+                    <span className="text-[10px] text-slate-500 font-black uppercase tracking-widest border-l-2 border-emerald-400 pl-3">Total {meta.totalItems} Artikel</span>
+                    <div className="flex items-center gap-2 bg-slate-50 border border-green-100 rounded-2xl rounded-tr-none p-1.5 shadow-sm">
                         <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={meta.currentPage <= 1} className="px-4 py-2 text-[11px] font-black disabled:opacity-30 text-slate-700 hover:bg-white rounded-xl transition-colors">Prev</button>
-                        <span className="px-4 py-2 text-[11px] font-black text-white bg-blue-950 rounded-xl shadow-sm">{meta.currentPage} / {meta.totalPages || 1}</span>
+                        <span className="px-4 py-2 text-[11px] font-black text-white bg-green-950 rounded-xl shadow-sm">{meta.currentPage} / {meta.totalPages || 1}</span>
                         <button onClick={() => setPage(p => Math.min(meta.totalPages, p + 1))} disabled={meta.currentPage >= meta.totalPages || meta.totalPages === 0} className="px-4 py-2 text-[11px] font-black disabled:opacity-30 text-slate-700 hover:bg-white rounded-xl transition-colors">Next</button>
                     </div>
                 </div>
@@ -213,7 +213,7 @@ export const PostPage: React.FC = () => {
 
             {/* MODAL DELETE */}
             {isDeleteModalOpen && (
-                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-blue-950/80 backdrop-blur-sm p-4">
+                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-green-950/80 backdrop-blur-sm p-4">
                     <div className="bg-white rounded-[2rem] rounded-tr-none w-full max-w-sm shadow-2xl text-center p-8 border-4 border-white/20 animate-in zoom-in-95 duration-200">
                         <div className="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-red-100">
                             <AlertTriangle className="text-red-500" size={36} />
@@ -230,14 +230,14 @@ export const PostPage: React.FC = () => {
 
             {/* MODAL SUKSES */}
             {isSuccessModalOpen && (
-                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-blue-950/80 backdrop-blur-sm p-4">
+                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-green-950/80 backdrop-blur-sm p-4">
                     <div className="bg-white rounded-[2rem] rounded-tr-none w-full max-w-sm shadow-2xl text-center p-8 border-4 border-white/20 animate-in zoom-in-95 duration-200">
-                        <div className="w-20 h-20 bg-cyan-50 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-cyan-100">
-                            <CheckCircle className="text-cyan-500" size={40} />
+                        <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-emerald-100">
+                            <CheckCircle className="text-emerald-500" size={40} />
                         </div>
                         <h2 className="text-xl font-black text-slate-900 tracking-tight">Berhasil!</h2>
                         <p className="text-sm text-slate-500 mt-2 font-medium leading-relaxed">{successMessage}</p>
-                        <button onClick={() => setIsSuccessModalOpen(false)} className="mt-8 w-full py-3.5 bg-blue-950 hover:bg-blue-900 text-white font-black text-xs rounded-xl shadow-lg hover:shadow-xl transition-all uppercase tracking-widest active:scale-95">Tutup Panel</button>
+                        <button onClick={() => setIsSuccessModalOpen(false)} className="mt-8 w-full py-3.5 bg-green-950 hover:bg-green-900 text-white font-black text-xs rounded-xl shadow-lg hover:shadow-xl transition-all uppercase tracking-widest active:scale-95">Tutup Panel</button>
                     </div>
                 </div>
             )}
